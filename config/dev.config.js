@@ -1,4 +1,4 @@
-{
+module.exports = {
     "server":{
         "port":3001,
         "cors":{
@@ -10,7 +10,6 @@
         }
     },
     "database":{
-        "connectionString":"mongodb://127.0.0.1:27017",
-        "databaseName": "insert-name-here"
+        "connectionString":`mongodb+srv://dimitar:${process.env.DB_PASS}@cubicle-workshop.cmgb5.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
     }
 }

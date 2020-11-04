@@ -10,6 +10,7 @@ const db = require('./db');
 const api = require('./api');
 const {tapLog} = require('./utils/tap-log');
 const globalErrorHandler = require('./global-error-handler');
+const dotenv = require('dotenv');
 
 const app = express();
 
@@ -37,7 +38,7 @@ const appListen = () => {
     });
 }
 
-db.connect(database.connectionString, database.databaseName)
+db.connect(database.connectionString)
     .catch(tapLog('Error connection to database!'))
     .then(tapLog('Successfully connected to database'))
     .then(appListen)
