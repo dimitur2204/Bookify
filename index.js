@@ -1,16 +1,17 @@
 global.__basedir = __dirname;
 
 const path = require('path');
+require('dotenv').config({path:path.resolve('./config/.env')});
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+
 const { server: {port, cors: corsConfig}, database} = require('./config');
 const db = require('./db');
 const api = require('./api');
 const {tapLog} = require('./utils/tap-log');
 const globalErrorHandler = require('./global-error-handler');
-const dotenv = require('dotenv');
 
 const app = express();
 

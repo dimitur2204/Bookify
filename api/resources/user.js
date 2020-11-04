@@ -1,22 +1,24 @@
 const {Router} = require('express');
 const controllerFactory = require('../modules/controller-factory');
+const userControllers = require('../modules/controllers/user');
 const User = require('../models/user')
 const router = Router();
 
-const controllers = {...controllerFactory(User)};
+const controllers = {...controllerFactory(User),...userControllers};
 
 
 router.route('/')
     .get(controllers.getAll)
-    .post(controllers.createOne);
 
 router.route('/register')
     .post(controllers.createOne);
 
-router.route('/register')
-    .post(controllers.createOne);
+router.route('/login')
+    .post(controllers.postLogin);
 
 router.route('/:id')
     .get(controllers.getOne)
     .put(controllers.updateOne)
     .delete(controllers.deleteOne);
+
+module.exports = router;

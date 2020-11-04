@@ -1,5 +1,6 @@
 const {Schema,Types,model} = require('mongoose');
 
+
 const bookSchema = new Schema({
     title:{
         type:String,
@@ -9,7 +10,7 @@ const bookSchema = new Schema({
         type:String,
         required:true
     },
-    author:{
+    authorId:{
         type:Types.ObjectId,
         ref:'author',
         required:true
@@ -19,7 +20,7 @@ const bookSchema = new Schema({
         required:true
     },
     categories:{
-        type:String,
+        type:[String],
         enum:[
             'Arts and Music','Biographies','Business','Comics','Computers and Tech',
             'Cooking', 'Education and Reference','Entertainment','Health and Fitness',

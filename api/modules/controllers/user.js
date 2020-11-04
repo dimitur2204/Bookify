@@ -8,5 +8,5 @@ const postLogin = (req, res, next) => {
 }
 
 module.exports = {
-    getAllProducts
+    postLogin
 }

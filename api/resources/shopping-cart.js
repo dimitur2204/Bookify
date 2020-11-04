@@ -9,16 +9,17 @@ const controllers = {...controllerFactory(ShoppingCart),...shoppingCartControlle
 
 router.route('/:id/products')
     .get(controllers.getAllProducts)
+// TODO: Add controllers
+// router.route('/:cartId/products/:productId')
+//     .delete(controllers.deleteProduct)
 
-router.route('/:cartId/products/:productId')
-    .delete(controllers.deleteProduct)
+// router.route('/')
+//     .get(controllers.createCart);
 
-router.route('/')
-    .get(controllers.createCart);
+// router.route('/:id')
+//     .get(controllers.getOne)
+//     .post(controllers.addProduct)
 
-router.route('/:id')
-    .get(controllers.getOne)
-    .post(controllers.addProduct)
-
-router.route('/:id/checkout')
-    .post(controllers.checkout)
+// router.route('/:id/checkout')
+//     .post(controllers.checkout)
+module.exports = router;
