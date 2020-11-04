@@ -1,10 +1,12 @@
 global.__basedir = __dirname;
 
 const path = require('path');
+require('dotenv').config({path:path.resolve('./config/.env')});
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+
 const { server: {port, cors: corsConfig}, database} = require('./config');
 const db = require('./db');
 const api = require('./api');
@@ -37,7 +39,7 @@ const appListen = () => {
     });
 }
 
-db.connect(database.connectionString, database.databaseName)
+db.connect(database.connectionString)
     .catch(tapLog('Error connection to database!'))
     .then(tapLog('Successfully connected to database'))
     .then(appListen)
