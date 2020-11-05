@@ -23,6 +23,7 @@ module.exports = controllerFactory = (Model) => {
     const getOne = (req,res,next) => {
         const id = req.params.id;
         Model.findById(id).then(doc => {
+
             res.status(200).send(doc);
         }).catch(next);
     }

@@ -21,6 +21,10 @@ const userSchema = new Schema({
         type:String,
         required:true
     },
+    description:{
+        type:String,
+        required:true
+    },
     books:[{
         type:Types.ObjectId,
         ref:'book'
@@ -28,6 +32,13 @@ const userSchema = new Schema({
     shoppingCart:{
         type:Types.ObjectId,
         ref:'shoppingCart'
+    },
+    role:{
+        type:String,
+        enum:[
+            "User",
+            "Author"
+        ]
     }
 });
 
