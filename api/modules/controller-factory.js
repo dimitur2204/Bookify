@@ -15,7 +15,32 @@ module.exports = controllerFactory = (Model) => {
     })
     
     const getAll = asyncHandler(async (req,res,next) => {
-        const doc = await Model.find({})
+        let query;
+
+        const reqQuery = {...req.query};
+
+        const removeFields = ['select'];
+
+        removeFields.forEach(field => {
+            delete reqQuery[field];
+        })
+
+        let queryStr = JSON.stringify(reqQuery);
+
+        //returning the query param with a $ concatenated since mongoose requires it for the search queries
+        queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => '$' + match);
+
+        query = Model.find(JSON.parse(queryStr));
+
+        //filtereing unselected fields
+        if (req.query.select) {
+            // replacing the , with spaces since mongoose does'nt recognize it either
+            const fields = req.query.select.replace(',',' ');
+            console.log(fields);
+            query = query.select(fields);            
+        }
+
+        const doc = await query
         res.status(201).send(doc);
     })
     
