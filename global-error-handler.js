@@ -3,7 +3,7 @@ const ErrorResponse = require("./utils/error-response");
 module.exports = (err,req,res,next) => {
     let error = {...err};
 
-    // console.error(err);
+    console.error(err);
 
     //Wrong Object ID Errors
     if(err.name === 'CastError'){
