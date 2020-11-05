@@ -10,6 +10,6 @@ module.exports = {
         }
     },
     "database":{
-        "connectionString":`mongodb+srv://dimitar:${process.env.DB_PASS}@cubicle-workshop.cmgb5.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+        "connectionString":`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS}@${process.env.DB_CLUSTER_NAME}.cmgb5.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
     }
 }
