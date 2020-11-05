@@ -1,6 +1,6 @@
 const {Router} = require('express');
 const controllerFactory = require('../modules/controller-factory');
-const userControllers = require('../modules/controllers/user');
+const userControllers = require('../modules/user/controllers/user');
 const User = require('../models/user')
 const router = Router();
 

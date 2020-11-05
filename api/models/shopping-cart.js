@@ -9,15 +9,6 @@ const shoppingCartSchema = new Schema({
     books:[{
         type:Types.ObjectId,
         ref:'book'
-    }],
+    }]
 });
-shoppingCartSchema.statics.price = function () {
-    return this.populate('books').execPopulate().then(doc=>{
-        return doc.books.reduce((acc,curr) => {
-            acc+=curr.price;
-            return acc;
-        },0)
-    })
-}
-
 module.exports = model('shoppingCart',shoppingCartSchema);

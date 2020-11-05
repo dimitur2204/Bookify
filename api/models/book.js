@@ -38,7 +38,17 @@ const bookSchema = new Schema({
     buyers:[{
         type:Types.ObjectId,
         ref:'user'
-    }]
+    }],
+    createdAt:{
+        type:Date,
+        default:Date.now()
+    }
 });
+
+bookSchema.pre('remove',async function(next){
+    await this.model('user').updateMany({},{$pull:{books: {$in: this._id}}}, {multi:true});
+    await this.model('shoppingCart').updateMany({},{$pull:{books: {$in: this._id}}}, {multi:true});
+    next();
+})
 
 module.exports = model('book',bookSchema);
