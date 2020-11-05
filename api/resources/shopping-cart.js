@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const controllerFactory = require('../modules/controller-factory');
 const ShoppingCart = require('../models/shopping-cart');
-const shoppingCartControllers = require('../modules/controllers/shopping-cart');
+const shoppingCartControllers = require('../modules/shopping-cart/controllers/shopping-cart');
 const router = Router();
 
 const controllers = {...controllerFactory(ShoppingCart),...shoppingCartControllers};
@@ -12,7 +12,7 @@ router.route('/:id/books')
     
 
 router.route('/:cartId/books/:bookId')
-    .delete(controllers.deleteBook)
+    .delete(controllers.removeBook)
     .post(controllers.addBook)
 
 router.route('/')
