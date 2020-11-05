@@ -1,39 +1,35 @@
+const asyncHandler = require("../middleware/asyncHandlers");
+
 module.exports = controllerFactory = (Model) => {
-    const createOne = (req,res,next) => {
-        Model.create(req.body).then(doc => {
-            res.status(201).send(doc);
-        }).catch(next);
-    }
+    const createOne = asyncHandler(async (req,res,next) => {
+        const doc = await Model.create(req.body)
+        res.status(201).send(doc);
+    })
     
-    const updateOne = (req,res,next) => {
+    const updateOne = asyncHandler(async (req,res,next) => {
         const id = req.params.id
-        Model.findByIdAndUpdate(id,req.body,{
+        const doc = await Model.findByIdAndUpdate(id,req.body,{
             new:true
-        }).then(doc => {
-            res.status(204).send(doc);
-        }).catch(next);
-    }
+        })
+        res.status(204).send(doc);
+    })
     
-    const getAll = (req,res,next) => {
-        Model.find({}).then(doc => {
-            res.status(201).send(doc);
-        }).catch(next);
-    }
+    const getAll = asyncHandler(async (req,res,next) => {
+        const doc = await Model.find({})
+        res.status(201).send(doc);
+    })
     
-    const getOne = (req,res,next) => {
+    const getOne = asyncHandler(async (req,res,next) => {
         const id = req.params.id;
-        Model.findById(id).then(doc => {
+        const doc = await Model.findById(id)
+        res.status(200).send(doc);
+    })
 
-            res.status(200).send(doc);
-        }).catch(next);
-    }
-
-    const deleteOne = (req,res,next) => {
+    const deleteOne = asyncHandler(async (req,res,next) => {
         const id = req.params.id;
-        Model.findByIdandDelete(id).then(doc => {
-            res.status(200).send(doc);
-        }).catch(next);
-    }
+        const doc = await Model.findByIdandDelete(id)
+        res.status(200).send(doc);
+    })
 
     return {
         createOne,

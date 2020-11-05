@@ -1,11 +1,10 @@
+const asyncHandler = require('../../middleware/asyncHandlers');
 const User = require('../../models/user');
 
-const postLogin = (req, res, next) => {
+const postLogin = asyncHandler(async (req, res, next) => {
     const {email, password} = req.body;
-    User.find({email,password}).then(doc => {
-        //TODO: Finish logging func
-    }).catch(next);
-}
+    const user = await User.find({email,password})
+})
 
 module.exports = {
     postLogin
