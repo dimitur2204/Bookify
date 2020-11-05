@@ -1,13 +1,14 @@
 const {Router} = require('express');
 const controllerFactory = require('../modules/controller-factory');
-const Book = require('../models/book')
+const processQuery = require('../middleware/processQuery')
+const Book = require('../models/book');
 const router = Router();
 
 const controllers = controllerFactory(Book);
 
 
 router.route('/')
-    .get(controllers.getAll)
+    .get(processQuery,controllers.getAll)
     .post(controllers.createOne);
 
 router.route('/:id')
