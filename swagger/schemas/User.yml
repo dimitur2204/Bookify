@@ -1,0 +1,27 @@
+User:
+  properties: 
+    firstName:
+      type: string
+
+    lastName:
+        type: string
+
+    email:
+        type: string
+
+    password:
+      type: string
+    
+    imageUrl:
+        type: string
+    
+    description:
+      type: string
+    books:
+      $ref: '#book'
+
+    shoppingCart:
+      $ref: '#ShoppingCart'
+    
+    role:
+      type: string
