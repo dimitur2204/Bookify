@@ -1,5 +1,5 @@
-const asyncHandler = require('../../middleware/asyncHandlers');
-const User = require('../../models/user');
+const asyncHandler = require('../../../middleware/asyncHandlers');
+const User = require('../../../models/user');
 
 const postLogin = asyncHandler(async (req, res, next) => {
     const {email, password} = req.body;

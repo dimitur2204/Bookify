@@ -1,4 +1,6 @@
 const asyncHandler = require("../middleware/asyncHandlers");
+const { uploader } = require("../middleware/cloudinary");
+const { dataUri } = require("../middleware/multer");
 
 module.exports = controllerFactory = (Model) => {
     const createOne = asyncHandler(async (req,res,next) => {
@@ -23,7 +25,6 @@ module.exports = controllerFactory = (Model) => {
                 limit:req.query.limit
             }
         }
-        console.log(req.query.startIndex);
         if(req.query.startIndex > 0){
             pagination.prev = {
                 page: req.query.page - 1,
@@ -48,7 +49,8 @@ module.exports = controllerFactory = (Model) => {
 
     const deleteOne = asyncHandler(async (req,res,next) => {
         const id = req.params.id;
-        const doc = await Model.findByIdandDelete(id)
+        const doc = await Model.findById(id)
+        await doc.remove();
         res.status(200).send({success:true,doc});
     })
 

@@ -1,6 +1,6 @@
-const asyncHandler = require('../../middleware/asyncHandlers');
-const Book = require('../../models/book');
-const ShoppingCart = require('../../models/shopping-cart');
+const asyncHandler = require('../../../middleware/asyncHandlers');
+const Book = require('../../../models/book');
+const ShoppingCart = require('../../../models/shopping-cart');
 
 const createCart =asyncHandler (async (req, res, next) => {
     const cart = await ShoppingCart.create({
@@ -23,7 +23,7 @@ const addBook = asyncHandler(async (req, res, next) => {
     res.status(200).json({success:true,doc:cart});
 })
 
-const deleteBook = asyncHandler(async (req, res, next) => {
+const removeBook = asyncHandler(async (req, res, next) => {
     const book = await Book.findById(req.params.bookId)
     const cart = await ShoppingCart.findByIdAndUpdate(req.params.cartId,{
             $pull: {books: book._id}
@@ -41,7 +41,7 @@ const checkout = asyncHandler(async (req, res, next) => {
 module.exports = {
     createCart,
     getAllBooks,
-    deleteBook,
+    removeBook,
     addBook,
     checkout
 }

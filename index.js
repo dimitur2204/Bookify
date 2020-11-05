@@ -12,6 +12,8 @@ const db = require('./db');
 const api = require('./api');
 const {tapLog} = require('./utils/tap-log');
 const globalErrorHandler = require('./global-error-handler');
+const { cloudinaryConfig } = require('./api/middleware/cloudinary');
+
 
 const app = express();
 
@@ -22,6 +24,7 @@ app.use(cors({
 }));
 
 app.use(cookieParser());
+app.use(cloudinaryConfig);
 app.use(bodyParser.json());
 app.use(express.static(path.resolve(__basedir, 'static')));
 
