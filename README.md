@@ -51,12 +51,21 @@ npm install
 ```
 3. Create a '.env' file in the config folder and enter your MongoDB Atlas Data in it:
 You will need 
+```sh
 DB_PASS=example_password
+```
+```sh
 DB_NAME=example_db_name
+```
+```sh
 DB_USERNAME=example_username
+```
+```sh
 DB_CLUSTER_NAME=example_cluster_name
-Otherwise
-if you want to run it locally you should have Mongo shell installed and change the database connection string in dev.config.js to your localhost database
+```
+```sh
+Otherwise if you want to run it locally you should have Mongo shell installed and change the database connection string in dev.config.js to your localhost database
+```
 ```JS
 
 ```
