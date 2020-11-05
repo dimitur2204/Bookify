@@ -1,49 +1,42 @@
+const asyncHandler = require('../../middleware/asyncHandlers');
 const Book = require('../../models/book');
 const ShoppingCart = require('../../models/shopping-cart');
 
-const createCart = (req, res, next) => {
-    ShoppingCart.create({
+const createCart =asyncHandler (async (req, res, next) => {
+    const cart = await ShoppingCart.create({
         holder:'5fa2bc6c59dcbd23603b9711'
-    }).then(doc => {
-        res.status(201).json(doc);
-    }).catch(next)
-}
+    });
 
-const getAllBooks = (req, res, next) => {
-    ShoppingCart.findById(req.params.id).then(doc => {
-        doc.populate('books').execPopulate().then(doc =>{
-            res.status(200).json(doc.books);
-        })
-    }).catch(next);
-}
+    res.status(201).json(cart);
+})
 
-const addBook = (req, res, next) => {
-    Book.findById(req.params.bookId).then(book => {
-        ShoppingCart.findByIdAndUpdate(req.params.cartId,{
+const getAllBooks = asyncHandler(async (req, res, next) => {
+    const cart = await ShoppingCart.findById(req.params.id)
+    const cartWithBooks = await cart.populate('books').execPopulate();
+    res.status(200).json(cartWithBooks.books);
+})
+const addBook = asyncHandler(async (req, res, next) => {
+    const book = await Book.findById(req.params.bookId);
+    const cart = await ShoppingCart.findByIdAndUpdate(req.params.cartId,{
             $addToSet: {books: book}
-        },{new:true}).then(doc => {
-            res.status(200).json(doc);
-        }).catch(next)
-    })
-}
+        },{new:true})
+    res.status(200).json(cart);
+})
 
-const deleteBook = (req, res, next) => {
-    Book.findById(req.params.bookId).then(book => {
-        ShoppingCart.findByIdAndUpdate(req.params.cartId,{
+const deleteBook = asyncHandler(async (req, res, next) => {
+    const book = await Book.findById(req.params.bookId)
+    const cart = await ShoppingCart.findByIdAndUpdate(req.params.cartId,{
             $pull: {books: book._id}
-        },{new:true}).then(doc => {
-            res.status(200).json(doc);
-        }).catch(next)
-    })
-}
+        },{new:true})
+    res.status(200).json(cart);
+})
 
-const checkout = (req, res, next) => {
-    ShoppingCart.findByIdAndUpdate(req.params.id,{
+const checkout = asyncHandler(async (req, res, next) => {
+    const cart = await ShoppingCart.findByIdAndUpdate(req.params.id,{
         $set:{books:[]}
-    },{new:true}).then(doc => {
-        res.status(200).json(doc);
-    }).catch(next)
-}
+    },{new:true})
+    res.status(200).json(cart);
+})
 
 module.exports = {
     createCart,
