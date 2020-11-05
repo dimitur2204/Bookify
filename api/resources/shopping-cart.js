@@ -1,25 +1,27 @@
 const {Router} = require('express');
 const controllerFactory = require('../modules/controller-factory');
-const ShoppingCart = require('../models/user');
+const ShoppingCart = require('../models/shopping-cart');
 const shoppingCartControllers = require('../modules/controllers/shopping-cart');
 const router = Router();
 
 const controllers = {...controllerFactory(ShoppingCart),...shoppingCartControllers};
 
 
-router.route('/:id/products')
-    .get(controllers.getAllProducts)
-// TODO: Add controllers
-// router.route('/:cartId/products/:productId')
-//     .delete(controllers.deleteProduct)
+router.route('/:id/books')
+    .get(controllers.getAllBooks)
+    
 
-// router.route('/')
-//     .get(controllers.createCart);
+router.route('/:cartId/books/:bookId')
+    .delete(controllers.deleteBook)
+    .post(controllers.addBook)
 
-// router.route('/:id')
-//     .get(controllers.getOne)
-//     .post(controllers.addProduct)
+router.route('/')
+    .post(controllers.createCart);
 
-// router.route('/:id/checkout')
-//     .post(controllers.checkout)
+router.route('/:id')
+    .get(controllers.getOne)
+
+router.route('/:id/checkout')
+    .post(controllers.checkout)
+
 module.exports = router;

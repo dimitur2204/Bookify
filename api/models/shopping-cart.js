@@ -2,7 +2,7 @@ const {Schema,Types,model} = require('mongoose');
 
 const shoppingCartSchema = new Schema({
     holder:{
-        type:Types.ObjectId,
+        type:String,//Types.ObjectId,
         required:true,
         ref:'user'
     },
