@@ -18,12 +18,8 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.10.9",
-<<<<<<< HEAD
     "multer": "^1.4.2",
     "swagger": "^0.7.5"
-=======
-    "multer": "^1.4.2"
->>>>>>> 50926c399f48ab22f5a45f95eda7adcb49b20154
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
