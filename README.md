@@ -22,7 +22,6 @@ Book platform app for authors who can publish books and readers who can buy and 
 
 This is a Book app with authors and users where authors can post their books and users can buy them.
 Built with EXPRESS RESTful API on the backend and Angular on the front end.
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 ### Built With
 
@@ -68,7 +67,7 @@ if you want to run it locally you should have Mongo shell installed and change t
 <!-- USAGE EXAMPLES -->
 ## Usage
 Documentation is not yet ready!
-_For more examples, please refer to the [Documentation](https://no-docs-yet.com)_
+_For more examples, please refer to the [Documentation](https://no-docs-yet.com)_ which does not exist yet :)
 
 
 
