@@ -64,7 +64,9 @@ DB_USERNAME=example_username
 DB_CLUSTER_NAME=example_cluster_name
 ```
 ```sh
-Otherwise if you want to run it locally you should have Mongo shell installed and change the database connection string in dev.config.js to your localhost database
+Otherwise if you want to run it locally
+you should have Mongo shell installed and change the database connection
+string in dev.config.js to your localhost database
 ```
 ```JS
 
@@ -75,8 +77,8 @@ Otherwise if you want to run it locally you should have Mongo shell installed an
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-Documentation is not yet ready!
-_For more examples, please refer to the [Documentation](https://no-docs-yet.com)_ which does not exist yet :)
+To view the documentation you should start the local server first and then head to http://localhost:3001/api/v1/docs
+_For more examples, please refer to the [Documentation](http://localhost:3001/api/v1/docs)_ 
 
 
 

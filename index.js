@@ -13,9 +13,12 @@ const api = require('./api');
 const {tapLog} = require('./utils/tap-log');
 const globalErrorHandler = require('./global-error-handler');
 const { cloudinaryConfig } = require('./api/middleware/cloudinary');
-
+const swaggerUi = require('swagger-ui-express');
 
 const app = express();
+
+const apiDocs = require('./swagger/swagger.json');
+app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(apiDocs));
 
 app.use(cors({
     origin: corsConfig.urls,
@@ -43,7 +46,7 @@ const appListen = () => {
 }
 
 db.connect(database.connectionString)
-    .catch(tapLog('Error connection to database!'))
+    .catch((err) => tapLog('Error connection to database!'))
     .then(tapLog('Successfully connected to database'))
     .then(appListen)
     .then(tapLog(`Server is listening on :${port}`))

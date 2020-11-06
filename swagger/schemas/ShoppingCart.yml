@@ -1,9 +1,0 @@
-ShoppingCart:
-properties:
-  holder:
-    ref: '#User'
-  books:
-    type: array
-    items: 
-      ref: '#Book'
-  
