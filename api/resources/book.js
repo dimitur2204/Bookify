@@ -4,11 +4,11 @@ const processQuery = require('../middleware/processQuery')
 const Book = require('../models/book');
 const router = Router();
 const { multerUploads } = require('../middleware/multer');
-const processImageUpload = require('../middleware/processImageUpload');
+const processFileUpload = require('../middleware/processFileUpload');
 const controllers = controllerFactory(Book);
 router.route('/')
     .get(processQuery,controllers.getAll)
-    .post(multerUploads,processImageUpload,controllers.createOne);
+    .post(multerUploads,processFileUpload,controllers.createOne);
 
 router.route('/:id')
     .get(controllers.getOne)

@@ -78,7 +78,6 @@ string in dev.config.js to your localhost database
 <!-- USAGE EXAMPLES -->
 ## Usage
 To view the documentation you should start the local server first and then head to http://localhost:3001/api/v1/docs
-_For more examples, please refer to the [Documentation](http://localhost:3001/api/v1/docs)_ 
 
 
 
