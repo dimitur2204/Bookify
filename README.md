@@ -23,6 +23,8 @@ Book platform app for authors who can publish books and readers who can buy and 
 This is a Book app with authors and users where authors can post their books and users can buy them.
 Built with EXPRESS RESTful API on the backend and Angular on the front end.
 
+![screenshot](https://github.com/dimitur2204/Bookify/blob/main/static/img/API.png?raw=true)
+
 ### Built With
 
 * [Express](https://expressjs.com/)
