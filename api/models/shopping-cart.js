@@ -9,6 +9,10 @@ const shoppingCartSchema = new Schema({
     books:[{
         type:Types.ObjectId,
         ref:'book'
-    }]
+    }],
+    createdAt:{
+        type:Date,
+        default:Date.now()
+    }
 });
 module.exports = model('shoppingCart',shoppingCartSchema);

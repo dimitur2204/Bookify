@@ -33,7 +33,8 @@ const bookSchema = new Schema({
     },
     fullBookUrl:{
         type:String,
-        required:true
+        required:true,
+        select:false
     },
     buyers:[{
         type:Types.ObjectId,

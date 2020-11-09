@@ -1,4 +1,7 @@
 const {Schema,Types,model} = require('mongoose');
+const validator = require('validator').default;
+const bcrypt = require('bcryptjs');
+const asyncHandler = require('../middleware/asyncHandlers');
 
 const userSchema = new Schema({
     firstName:{
@@ -11,19 +14,27 @@ const userSchema = new Schema({
     },
     email:{
         type:String,
-        required:true
+        required:true,
+        unique:true,
+        validate:validator.isEmail
     },
     password:{
         type:String,
-        required:true
+        required:true,
+        minlength: 6,
+        select:false
+    },
+    resetPasswordToken:{
+
+    },
+    resetPasswordExpire:{
+
     },
     imageUrl:{
-        type:String,
-        required:true
+        type:String
     },
     description:{
-        type:String,
-        required:true
+        type:String
     },
     books:[{
         type:Types.ObjectId,
@@ -36,10 +47,21 @@ const userSchema = new Schema({
     role:{
         type:String,
         enum:[
-            "User",
-            "Author"
-        ]
+            "user",
+            "author"
+        ],
+        default:'user'
+    },
+    createdAt:{
+        type:Date,
+        default:Date.now()
     }
 });
+
+userSchema.pre('save', asyncHandler(async function(next){
+    const salt = await bcrypt.genSalt(11);
+    this.password = await bcrypt.hash(this.password, salt);
+    next();
+}));
 
 module.exports = model('user',userSchema);

@@ -19,7 +19,7 @@ module.exports = (err,req,res,next) => {
     //Mongoose validation error
     if(err.name === 'ValidationError'){
         const message = Object.values(err.errors)
-        .map(val => `Please add a ${val.path}`);
+        .map(val => `Please add a valid ${val.path}`);
         error = new ErrorResponse(message,400);
     }
 

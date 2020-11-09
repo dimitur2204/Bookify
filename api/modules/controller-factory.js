@@ -9,7 +9,7 @@ module.exports = controllerFactory = (Model) => {
     
     const updateOne = asyncHandler(async (req,res,next) => {
         const id = req.params.id
-        const doc = await Model.findByIdAndUpdate(id,req.body,{
+        const doc = await Model.findOneAndUpdate(id,req.body,{
             new:true
         })
         if(!doc){
@@ -24,7 +24,7 @@ module.exports = controllerFactory = (Model) => {
     
     const getOne = asyncHandler(async (req,res,next) => {
         const id = req.params.id;
-        const doc = await Model.findById(id);
+        const doc = await Model.findOne(id);
         if(!doc){
             return next(new ErrorResponse(`Item with id of ${id} not found!`,404));
          }
@@ -33,7 +33,7 @@ module.exports = controllerFactory = (Model) => {
 
     const deleteOne = asyncHandler(async (req,res,next) => {
         const id = req.params.id;
-        const doc = await Model.findById(id);
+        const doc = await Model.findOne(id);
         if(!doc){
             return next(new ErrorResponse(`Item with id of ${id} not found!`,404));
          }
