@@ -16,7 +16,11 @@ const getAllBooks = asyncHandler(async (req, res, next) => {
     res.status(200).json({success:true,doc:cartWithBooks.books});
 })
 const addBook = asyncHandler(async (req, res, next) => {
-    const book = await Book.findById(req.params.bookId);
+    const bookId = req.params.bookId;
+    const book = await Book.findById(bookId);
+    if(!book){
+        return next(new ErrorResponse(`Book with id of ${bookId} not found!`,404));
+    }
     const cart = await ShoppingCart.findByIdAndUpdate(req.params.cartId,{
             $addToSet: {books: book}
         },{new:true})
@@ -24,7 +28,12 @@ const addBook = asyncHandler(async (req, res, next) => {
 })
 
 const removeBook = asyncHandler(async (req, res, next) => {
-    const book = await Book.findById(req.params.bookId)
+    const bookId = req.params.bookId;
+    const book = await Book.findById(bookId);
+     
+    if(!book){
+        return next(new ErrorResponse(`Book with id of ${bookId} not found!`,404));
+    }
     const cart = await ShoppingCart.findByIdAndUpdate(req.params.cartId,{
             $pull: {books: book._id}
         },{new:true})

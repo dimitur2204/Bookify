@@ -1,9 +1,8 @@
 const ErrorResponse = require("./utils/error-response");
 
 module.exports = (err,req,res,next) => {
-    let error = {...err};
-
-    console.error(err);
+    console.log(err);
+    let error = err;
 
     //Wrong Object ID Errors
     if(err.name === 'CastError'){
@@ -23,6 +22,7 @@ module.exports = (err,req,res,next) => {
         .map(val => `Please add a ${val.path}`);
         error = new ErrorResponse(message,400);
     }
+
     res.status(error.statusCode || 500).json({
         success:false,
         error:error.message || 'Internal server error'

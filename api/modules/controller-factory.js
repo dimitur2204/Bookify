@@ -1,6 +1,5 @@
+const ErrorResponse = require("../../utils/error-response");
 const asyncHandler = require("../middleware/asyncHandlers");
-const { uploader } = require("../middleware/cloudinary");
-const { dataUri } = require("../middleware/multer");
 
 module.exports = controllerFactory = (Model) => {
     const createOne = asyncHandler(async (req,res,next) => {
@@ -13,6 +12,9 @@ module.exports = controllerFactory = (Model) => {
         const doc = await Model.findByIdAndUpdate(id,req.body,{
             new:true
         })
+        if(!doc){
+           return next(new ErrorResponse(`Item with id of ${id} not found!`,404));
+        }
         res.status(204).send({success:true,doc});
     })
     
@@ -43,13 +45,19 @@ module.exports = controllerFactory = (Model) => {
     
     const getOne = asyncHandler(async (req,res,next) => {
         const id = req.params.id;
-        const doc = await Model.findById(id)
+        const doc = await Model.findById(id);
+        if(!doc){
+            return next(new ErrorResponse(`Item with id of ${id} not found!`,404));
+         }
         res.status(200).send({success:true,doc});
     })
 
     const deleteOne = asyncHandler(async (req,res,next) => {
         const id = req.params.id;
-        const doc = await Model.findById(id)
+        const doc = await Model.findById(id);
+        if(!doc){
+            return next(new ErrorResponse(`Item with id of ${id} not found!`,404));
+         }
         await doc.remove();
         res.status(200).send({success:true,doc});
     })
