@@ -2,19 +2,6 @@ const asyncHandler = require('../../../middleware/asyncHandlers');
 const Book = require('../../../models/book');
 const ShoppingCart = require('../../../models/shopping-cart');
 
-const createCart =asyncHandler (async (req, res, next) => {
-    const cart = await ShoppingCart.create({
-        holder:'5fa2bc6c59dcbd23603b9711'
-    });
-
-    res.status(201).json({success:true,doc:cart});
-})
-
-const getAllBooks = asyncHandler(async (req, res, next) => {
-    const cart = await ShoppingCart.findById(req.params.id)
-    const cartWithBooks = await cart.populate('books').execPopulate();
-    res.status(200).json({success:true,doc:cartWithBooks.books});
-})
 const addBook = asyncHandler(async (req, res, next) => {
     const bookId = req.params.bookId;
     const book = await Book.findById(bookId);
@@ -48,8 +35,6 @@ const checkout = asyncHandler(async (req, res, next) => {
 })
 
 module.exports = {
-    createCart,
-    getAllBooks,
     removeBook,
     addBook,
     checkout

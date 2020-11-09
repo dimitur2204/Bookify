@@ -7,11 +7,11 @@ const { multerUploads } = require('../middleware/multer');
 const processFileUpload = require('../middleware/processFileUpload');
 const controllers = controllerFactory(Book);
 router.route('/')
-    .get(processQuery,controllers.getAll)
+    .get(processQuery(Book,null),controllers.getAll)
     .post(multerUploads,processFileUpload,controllers.createOne);
 
 router.route('/:id')
-    .get(controllers.getOne)
+    .get(processQuery(Book,null),controllers.getOne)
     .put(controllers.updateOne)
     .delete(controllers.deleteOne);
 
