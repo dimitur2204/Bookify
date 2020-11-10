@@ -19,7 +19,6 @@ const protect = asyncHandler(async (req,res,next) => {
     try {
         //verify token
         const decodedToken = jwt.verify(token,process.env.JWT_SECRET);
-        console.log(decodedToken);
         req.user = await User.findById(decodedToken.id);
         next();
     } catch (err) {
@@ -27,9 +26,10 @@ const protect = asyncHandler(async (req,res,next) => {
     }
 });
 
-const requireCreator = (model) => (req,res,next) => {
+const requireCreator = (model) => async (req,res,next) => {
     const user = req.user;
-    if (model.user === user._id) {
+    const resource = await model.findOne({user:user._id});
+    if (resource && resource.user.equals(user._id)) {
         return next();
     }
     return next(new ErrorResponse('Not authorized to access this route',403))

@@ -15,7 +15,7 @@ module.exports = controllerFactory = (Model) => {
         if(!doc){
            return next(new ErrorResponse(`Item with id of ${id} not found!`,404));
         }
-        res.status(204).send({success:true,doc});
+        res.status(200).send({success:true,doc});
     })
     
     const getAll = asyncHandler(async (req,res,next) => {
@@ -24,11 +24,10 @@ module.exports = controllerFactory = (Model) => {
     
     const getOne = asyncHandler(async (req,res,next) => {
         const id = req.params.id;
-        const doc = await Model.findOne({_id:id});
-        if(!doc){
+        if(res.advancedResults.count === 0){
             return next(new ErrorResponse(`Item with id of ${id} not found!`,404));
          }
-        res.status(200).send({success:true,doc});
+        res.status(200).send({success:true,doc:res.advancedResults.doc[0]});
     })
 
     const deleteOne = asyncHandler(async (req,res,next) => {

@@ -9,12 +9,29 @@ const { protect,permitRoles,requireCreator  } = require('../middleware/auth');
 const { addUserToBody } = require('../middleware/body');
 const controllers = controllerFactory(Book);
 router.route('/')
-    .get(protect, permitRoles('user'), processQuery(Book,null),controllers.getAll)
-    .post(protect, permitRoles('author'),multerUploads,processFileUpload,addUserToBody,controllers.createOne);
+    .get(protect, 
+         permitRoles('user'), 
+         processQuery(Book,null),
+         controllers.getAll)
+    .post(protect,
+         permitRoles('author'),
+         multerUploads,
+         processFileUpload,
+         addUserToBody,
+         controllers.createOne);
 
 router.route('/:id')
-    .get(protect, permitRoles('user'),processQuery(Book,null),controllers.getOne)
-    .put(protect, permitRoles('author'),requireCreator(Book),controllers.updateOne)
-    .delete(protect, permitRoles('author'),requireCreator(Book),controllers.deleteOne);
+    .get(protect,
+        permitRoles('user'),
+        processQuery(Book,null),
+        controllers.getOne)
+    .put(protect,
+        permitRoles('author'),
+        requireCreator(Book),
+        controllers.updateOne)
+    .delete(protect,
+        permitRoles('author'),
+        requireCreator(Book),
+        controllers.deleteOne);
 
 module.exports = router;

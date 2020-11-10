@@ -41,6 +41,7 @@ const proccessQuery = (model,populate) => {
         query = query.skip(startIndex).limit(limit);
 
         if(populate){
+            console.log(populate);
             query = query.populate(populate);
         }
 
