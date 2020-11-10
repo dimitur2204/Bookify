@@ -11,7 +11,7 @@ const sendTokenResponse = (user, statusCode, res) =>{
         httpOnly:true
     };
 
-    if (proces.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === 'production') {
         options.secure = true;
     }
 
@@ -59,16 +59,7 @@ const login = asyncHandler(async (req, res, next) => {
     sendTokenResponse(user,200,res);
 })
 
-const getLoggedUser = asyncHandler(async (req,res,next)=>{
-    const user = await User.findById(req.user.id);
-    res.status(200).json({
-        success:true,
-        doc:user
-    })
-})
-
 module.exports = {
     login,
-    register,
-    getLoggedUser
+    register
 }

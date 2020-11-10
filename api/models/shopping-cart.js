@@ -1,8 +1,8 @@
 const {Schema,Types,model} = require('mongoose');
 
 const shoppingCartSchema = new Schema({
-    holder:{
-        type:String,//Types.ObjectId,
+    user:{
+        type:Types.ObjectId,
         required:true,
         ref:'user'
     },
