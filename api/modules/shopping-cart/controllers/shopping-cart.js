@@ -29,7 +29,7 @@ const removeBook = asyncHandler(async (req, res, next) => {
 })
 
 const checkout = asyncHandler(async (req, res, next) => {
-    const cart = await ShoppingCart.findOneAndUpdate(req.params.cartId,{
+    const cart = await ShoppingCart.findOneAndUpdate({_id:req.params.cartId},{
         $set:{books:[]}
     },{new:true})
     res.status(200).json({success:true,doc:cart});

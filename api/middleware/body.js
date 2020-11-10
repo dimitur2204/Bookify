@@ -6,7 +6,8 @@ const addUserToBody = (req,res,next) => {
     next();
 }
 const modifyParamsForUser = (req,res,next) => {
-    req.params.id = req.user.id;
+    console.log(req.user);
+    req.params.id = req.user._id;
     next();
 }
 const modifyParamsForCart = shouldBeId => asyncHandler(async(req,res,next) => {

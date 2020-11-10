@@ -46,6 +46,11 @@ const bookSchema = new Schema({
     }
 });
 
+bookSchema.pre('save',async function(next){
+    await this.model('user').updateOne({_id:this.user},{$addToSet:{books: this}});
+    next();
+})
+
 bookSchema.pre('remove',async function(next){
     await this.model('user').updateMany({},{$pull:{books: {$in: this._id}}}, {multi:true});
     await this.model('shoppingCart').updateMany({},{$pull:{books: {$in: this._id}}}, {multi:true});
