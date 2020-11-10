@@ -14,7 +14,7 @@ const proccessQuery = (model,populate) => {
         const searchObj = JSON.parse(queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, match => '$' + match));
 
         //Finding resource
-        let query = model.find(searchObj);
+        let query = model.find({...searchObj,_id:req.params.id});
     
         //filtering unselected fields
         if (requestQuery.select) {
@@ -41,6 +41,7 @@ const proccessQuery = (model,populate) => {
         query = query.skip(startIndex).limit(limit);
 
         if(populate){
+            console.log(populate);
             query = query.populate(populate);
         }
 

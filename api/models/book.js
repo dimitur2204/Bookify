@@ -10,7 +10,7 @@ const bookSchema = new Schema({
         type:String,
         required:true
     },
-    authorId:{
+    user:{
         type:Types.ObjectId,
         ref:'user',
         required:true
@@ -33,7 +33,8 @@ const bookSchema = new Schema({
     },
     fullBookUrl:{
         type:String,
-        required:true
+        required:true,
+        select:false
     },
     buyers:[{
         type:Types.ObjectId,
@@ -44,6 +45,11 @@ const bookSchema = new Schema({
         default:Date.now()
     }
 });
+
+bookSchema.pre('save',async function(next){
+    await this.model('user').updateOne({_id:this.user},{$addToSet:{books: this}});
+    next();
+})
 
 bookSchema.pre('remove',async function(next){
     await this.model('user').updateMany({},{$pull:{books: {$in: this._id}}}, {multi:true});
