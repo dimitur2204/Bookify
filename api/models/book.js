@@ -13,7 +13,7 @@ const bookSchema = new Schema({
     imageId:{
         type:String
     },
-    authorId:{
+    user:{
         type:Types.ObjectId,
         ref:'user',
         required:true
@@ -39,7 +39,8 @@ const bookSchema = new Schema({
     },
     fullBookId:{
         type:String,
-        required:true
+        required:true,
+        select:false
     },
     buyers:[{
         type:Types.ObjectId,
