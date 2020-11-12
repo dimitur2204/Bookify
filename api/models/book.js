@@ -1,4 +1,5 @@
 const {Schema,Types,model} = require('mongoose');
+const { uploader } = require('../middleware/cloudinary');
 
 
 const bookSchema = new Schema({
@@ -7,8 +8,10 @@ const bookSchema = new Schema({
         required:true
     },
     imageUrl:{
-        type:String,
-        required:true
+        type:String
+    },
+    imageId:{
+        type:String
     },
     authorId:{
         type:Types.ObjectId,
@@ -31,7 +34,10 @@ const bookSchema = new Schema({
     previewUrl:{
         type:String
     },
-    fullBookUrl:{
+    previewId:{
+        type:String
+    },
+    fullBookId:{
         type:String,
         required:true
     },
@@ -44,6 +50,15 @@ const bookSchema = new Schema({
         default:Date.now()
     }
 });
+
+bookSchema.pre('save',async function(next){
+    await Promise.all([
+        uploader.destroy(this.imageId),
+        uploader.destroy(this.previewId),
+        uploader.destroy(this.fullBookId),
+        this.model('user').updateOne({_id:this.user,role:'author'},{$addToSet:{books: this}})]);
+    next();
+})
 
 bookSchema.pre('remove',async function(next){
     await this.model('user').updateMany({},{$pull:{books: {$in: this._id}}}, {multi:true});
