@@ -54,6 +54,7 @@ const bookSchema = new Schema({
 
 bookSchema.pre('save',async function(next){
     await Promise.all([
+        //taking only the second part of the public_id, excluding the folder
         uploader.destroy(this.imageId),
         uploader.destroy(this.previewId),
         uploader.destroy(this.fullBookId),

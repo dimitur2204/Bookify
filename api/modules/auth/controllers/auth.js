@@ -16,12 +16,12 @@ const sendTokenResponse = (user, statusCode, res) =>{
     }
 
     res
-        .status(statusCode)
-        .cookie('token',token,options)
-        .json({
-            success:true,
-            token
-        })
+    .status(statusCode)
+    .cookie('token',token,options)
+    .json({
+        success:true,
+        token
+    })
 }
 
 const register = asyncHandler(async (req, res, next) => {
@@ -61,5 +61,5 @@ const login = asyncHandler(async (req, res, next) => {
 
 module.exports = {
     login,
-    register
+    register,
 }

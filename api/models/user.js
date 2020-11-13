@@ -25,14 +25,12 @@ const userSchema = new Schema({
         minlength: 6,
         select:false
     },
-    resetPasswordToken:{
-
-    },
-    resetPasswordExpire:{
-
-    },
     imageUrl:{
         type:String
+    },
+    stripeId:{
+        type:String,
+        default:null
     },
     description:{
         type:String
