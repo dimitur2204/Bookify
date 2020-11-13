@@ -41,11 +41,10 @@ const processFileUpload = asyncHandler (async (req,res,next) => {
         const imageInfo = await uploader.upload(imageUri,{folder:'book_images'});
         req.body.imageId = imageInfo.public_id;
         req.body.imageUrl = imageInfo.url;
-        const pdfInfos = await Promise.all([uploader.upload(previewUri,{type:'private',folder:'previews'}),uploader.upload(fullBookUri,{type:'private',folder:'full_books'})])
-        const previewInfo = pdfInfos[0];
+        const previewInfo = await uploader.upload(previewUri,{type:'private',folder:'previews'});
         req.body.previewId = previewInfo.public_id;
         req.body.previewUrl = await utils.private_download_url(previewInfo.public_id,'pdf',{attachment:true,expires_at:NEVER_EXPIRE});
-        const fullBookInfo = pdfInfos[1];
+        const fullBookInfo = await uploader.upload(fullBookUri,{type:'private',folder:'full_books'});
         req.body.fullBookId = fullBookInfo.public_id;
         next();
         return;
