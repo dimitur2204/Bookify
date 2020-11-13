@@ -25,12 +25,6 @@ const userSchema = new Schema({
         minlength: 6,
         select:false
     },
-    resetPasswordToken:{
-
-    },
-    resetPasswordExpire:{
-
-    },
     imageUrl:{
         type:String
     },
