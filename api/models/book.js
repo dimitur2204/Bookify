@@ -8,7 +8,8 @@ const bookSchema = new Schema({
         required:true
     },
     imageUrl:{
-        type:String
+        type:String,
+        default:'no-image.jpg'
     },
     imageId:{
         type:String

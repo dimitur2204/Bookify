@@ -1,26 +1,15 @@
-const e = require("express");
 const ErrorResponse = require("../../utils/error-response");
 const asyncHandler = require("./asyncHandlers");
 const { uploader, utils } = require("./cloudinary");
 const { dataUri } = require("./multer");
 
 // This terribleness right here is needed because
-// cloudinary does not allow you to fetch public pdf files,
+// cloudinary does not allow you to fetch public pdf files for some reason,
 // so I need to create a privateUrl for the preview which does not expire
 const NEVER_EXPIRE = Number.MAX_SAFE_INTEGER;
 
-const processFileUpload = asyncHandler (async (req,res,next) => {
+const processBookUpload = asyncHandler (async (req,res,next) => {
     if(req.files) {
-        const image = req.files.image[0];
-        const imageUri = dataUri(image).content;
-        if (!image.mimetype.startsWith('image/')) {
-            return next(new ErrorResponse('Please upload an image file.',400));
-        }
-        if (image.size > process.env.MAX_IMAGE_UPLOAD) {
-            return next(new ErrorResponse
-                (`Please upload a file smaller than ${Math.round(process.env.MAX_IMAGE_UPLOAD / 1000000)}MB`,
-                400));
-        }
         const preview = req.files.preview[0];
         const previewUri = dataUri(preview).content;
         const fullBook = req.files.fullBook[0];
@@ -38,10 +27,8 @@ const processFileUpload = asyncHandler (async (req,res,next) => {
                 (`Please upload a file smaller than ${Math.round(process.env.MAX_FULL_UPLOAD / 1000000)}MB`,
                 400));
         }
-        const imageInfo = await uploader.upload(imageUri,{folder:'book_images'});
-        req.body.imageId = imageInfo.public_id;
-        req.body.imageUrl = imageInfo.url;
-        const previewInfo = await uploader.upload(previewUri,{type:'private',folder:'previews'});
+        const pdfInfos = await Promise.all([uploader.upload(previewUri,{type:'private',folder:'previews'}),uploader.upload(fullBookUri,{type:'private',folder:'full_books'})])
+        const previewInfo = pdfInfos[0];
         req.body.previewId = previewInfo.public_id;
         req.body.previewUrl = await utils.private_download_url(previewInfo.public_id,'pdf',{attachment:true,expires_at:NEVER_EXPIRE});
         const fullBookInfo = await uploader.upload(fullBookUri,{type:'private',folder:'full_books'});
@@ -52,5 +39,5 @@ const processFileUpload = asyncHandler (async (req,res,next) => {
         next(new ErrorResponse('Please upload files',400));
 });
 
-module.exports = processFileUpload;
+module.exports = processBookUpload;
 

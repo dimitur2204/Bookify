@@ -4,9 +4,10 @@ const processQuery = require('../middleware/processQuery')
 const Book = require('../models/book');
 const router = Router();
 const { multerUploads } = require('../middleware/multer');
-const processFileUpload = require('../middleware/processFileUpload');
+const processBookUpload = require('../middleware/processBookUpload');
 const { protect,permitRoles,requireCreator  } = require('../middleware/auth');
 const { addUserToBody } = require('../middleware/body');
+const processImageUpload = require('../middleware/processImageUpload');
 const controllers = controllerFactory(Book);
 router.route('/')
     .get(protect, 
@@ -16,7 +17,8 @@ router.route('/')
     .post(protect,
          permitRoles('author'),
          multerUploads,
-         processFileUpload,
+         processImageUpload,
+         processBookUpload,
          addUserToBody,
          controllers.createOne);
 
