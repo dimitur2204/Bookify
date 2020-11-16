@@ -1,8 +1,6 @@
 const asyncHandler = require('../../../middleware/asyncHandlers');
 const Book = require('../../../models/book');
 const ShoppingCart = require('../../../models/shopping-cart');
-const { payment } = require('../../paypal/config');
-const { createPayment } = require('../../paypal/payment');
 
 
 const addBook = asyncHandler(async (req, res, next) => {
@@ -32,10 +30,7 @@ const removeBook = asyncHandler(async (req, res, next) => {
 })
 
 const checkout = asyncHandler(async (req, res, next) => {
-
-    const cart = await ShoppingCart.findOneAndUpdate({_id:req.params.cartId},{
-        $set:{books:[]}
-    },{new:true})
+    const cart = await ShoppingCart.findOne({_id:req.params.cartId}).populate('books','fullBookId');
     res.status(200).json({success:true,doc:cart});
 })
 

@@ -26,7 +26,8 @@ const userSchema = new Schema({
         select:false
     },
     imageUrl:{
-        type:String
+        type:String,
+        default:'no-image.jpg'
     },
     description:{
         type:String

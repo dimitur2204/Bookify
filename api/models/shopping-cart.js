@@ -5,7 +5,7 @@ const shoppingCartSchema = new Schema({
         type:Types.ObjectId,
         required:true,
         ref:'user'
-    },
+    },  
     books:[{
         type:Types.ObjectId,
         ref:'book'

@@ -1,10 +1,11 @@
 const {Router} = require('express');
+const { protect, permitRoles } = require('../middleware/auth');
 const paypal = require('../modules/paypal/payment');
 const router = Router();
 
 
 router.route('/create')
-    .post(paypal.createPayment);
+    .post(protect,permitRoles('user'),paypal.createPayment);
 
 router.route('/cancel')
     .get(paypal.cancel);

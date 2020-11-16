@@ -30,10 +30,11 @@ router.route('/')
         controllers.getOne)
 
 router.route('/checkout')
-    .post(protect,
+    .get(protect,
         permitRoles('user'),
-        modifyParamsForCart(false),
         requireCreator(ShoppingCart),
+        modifyParamsForCart(false),
+        proccessQuery(ShoppingCart,'books'),
         controllers.checkout)
 
 module.exports = router;
