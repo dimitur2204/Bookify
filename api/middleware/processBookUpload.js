@@ -31,7 +31,7 @@ const processBookUpload = asyncHandler (async (req,res,next) => {
         const previewInfo = pdfInfos[0];
         req.body.previewId = previewInfo.public_id;
         req.body.previewUrl = await utils.private_download_url(previewInfo.public_id,'pdf',{attachment:true,expires_at:NEVER_EXPIRE});
-        const fullBookInfo = pdfInfos[1];
+        const fullBookInfo = await uploader.upload(fullBookUri,{type:'private',folder:'full_books'});
         req.body.fullBookId = fullBookInfo.public_id;
         next();
         return;

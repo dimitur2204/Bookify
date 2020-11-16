@@ -29,6 +29,10 @@ const userSchema = new Schema({
         type:String,
         default:'no-image.jpg'
     },
+    stripeId:{
+        type:String,
+        default:null
+    },
     description:{
         type:String
     },

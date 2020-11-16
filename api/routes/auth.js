@@ -2,7 +2,7 @@ const {Router} = require('express');
 const controllerFactory = require('../modules/controller-factory');
 const authControllers = require('../modules/auth/controllers/auth');
 const User = require('../models/user');
-const { protect } = require('../middleware/auth');
+const { protect, permitRoles } = require('../middleware/auth');
 const { modifyParamsForUser } = require('../middleware/body');
 const proccessQuery = require('../middleware/processQuery');
 const processImageUpload = require('../middleware/processImageUpload');
@@ -15,6 +15,9 @@ router.route('/register')
 
 router.route('/login')
     .post(controllers.login);
+
+router.route('/stripe')
+    .post(protect,permitRoles('author'),stripeSetup)
 
 router.route('/me')
     .get(protect,modifyParamsForUser,proccessQuery(User,'books shoppingCart'),controllers.getOne);
