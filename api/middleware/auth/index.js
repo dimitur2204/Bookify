@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
-const ErrorResponse = require('../../utils/error-response');
-const User = require('../models/user');
-const asyncHandler = require('./asyncHandlers');
+const ErrorResponse = require('../../../utils/error-response');
+const User = require('../../models/user');
+const asyncHandler = require('../asyncHandlers');
 
 const protect = asyncHandler(async (req,res,next) => {
     let token;
@@ -9,7 +9,7 @@ const protect = asyncHandler(async (req,res,next) => {
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         token = req.headers.authorization.split(' ')[1];
     }else if(req.cookies.token){
-        token = req.cookie.token
+        token = req.cookies.token
     }
 
     if(!token){
@@ -26,14 +26,14 @@ const protect = asyncHandler(async (req,res,next) => {
     }
 });
 
-const requireCreator = (model) => async (req,res,next) => {
+const requireCreator = (model) => asyncHandler(async (req,res,next) => {
     const user = req.user;
     const resource = await model.findOne({user:user._id});
     if (resource && resource.user.equals(user._id)) {
         return next();
     }
     return next(new ErrorResponse('Not authorized to access this route',403))
-} 
+})
 
 const permitRoles = (...roles) => {
     return (req,res,next) =>{

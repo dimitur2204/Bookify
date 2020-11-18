@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const controllerFactory = require('../modules/controller-factory');
 const ShoppingCart = require('../models/shopping-cart');
-const shoppingCartControllers = require('../modules/shopping-cart/controllers/shopping-cart');
+const shoppingCartControllers = require('../modules/shopping-cart');
 const { protect, requireCreator, permitRoles } = require('../middleware/auth');
 const proccessQuery = require('../middleware/processQuery');
 const { modifyParamsForCart } = require('../middleware/body');
@@ -28,13 +28,5 @@ router.route('/')
         requireCreator(ShoppingCart),
         proccessQuery(ShoppingCart,'books'),
         controllers.getOne)
-
-router.route('/checkout')
-    .get(protect,
-        permitRoles('user'),
-        requireCreator(ShoppingCart),
-        modifyParamsForCart(false),
-        proccessQuery(ShoppingCart,'books'),
-        controllers.checkout)
 
 module.exports = router;

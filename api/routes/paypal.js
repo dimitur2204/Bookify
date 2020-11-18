@@ -11,6 +11,6 @@ router.route('/cancel')
     .get(paypal.cancel);
 
 router.route('/process')
-    .get(paypal.process);
+    .get(protect,paypal.process);
 
 module.exports = router;

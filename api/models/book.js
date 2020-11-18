@@ -1,5 +1,5 @@
 const {Schema,Types,model} = require('mongoose');
-const { uploader } = require('../middleware/cloudinary');
+const { uploader } = require('../middleware/files/cloudinary');
 
 
 const bookSchema = new Schema({
@@ -12,7 +12,8 @@ const bookSchema = new Schema({
         default:'no-image.jpg'
     },
     imageId:{
-        type:String
+        type:String,
+        required:true
     },
     user:{
         type:Types.ObjectId,
@@ -21,6 +22,7 @@ const bookSchema = new Schema({
     },
     price:{
         type:Number,
+        min:0,
         required:true
     },
     categories:{
@@ -54,18 +56,18 @@ const bookSchema = new Schema({
 });
 
 bookSchema.pre('save',async function(next){
-    await Promise.all([
-        //taking only the second part of the public_id, excluding the folder
-        uploader.destroy(this.imageId),
-        uploader.destroy(this.previewId),
-        uploader.destroy(this.fullBookId),
-        this.model('user').updateOne({_id:this.user,role:'author'},{$addToSet:{books: this}})]);
+    await this.model('user').updateOne({_id:this.user,role:'author'},{$addToSet:{books: this}});
     next();
 })
 
 bookSchema.pre('remove',async function(next){
-    await this.model('user').updateMany({},{$pull:{books: {$in: this._id}}}, {multi:true});
-    await this.model('shoppingCart').updateMany({},{$pull:{books: {$in: this._id}}}, {multi:true});
+    const book = await this.model('book').findOne({_id:this._id}).select('fullBookId');
+    await uploader.destroy(this.imageId,{});
+    await uploader.destroy(this.previewId,{});
+    await uploader.destroy(book.fullBookId,{});
+    await Promise.all([
+        this.model('user').updateMany({},{$pull:{books: {$in: this._id}}}, {multi:true}),
+        this.model('shoppingCart').updateMany({},{$pull:{books: {$in: this._id}}}, {multi:true})]);
     next();
 })
 

@@ -1,6 +1,6 @@
-const ErrorResponse = require('../../../../utils/error-response');
-const asyncHandler = require('../../../middleware/asyncHandlers');
-const User = require('../../../models/user');
+const ErrorResponse = require('../../../utils/error-response');
+const asyncHandler = require('../../middleware/asyncHandlers');
+const User = require('../../models/user');
 
 const sendTokenResponse = (user, statusCode, res) =>{
     const token = user.getSignedJwtToken();
@@ -25,14 +25,15 @@ const sendTokenResponse = (user, statusCode, res) =>{
 }
 
 const register = asyncHandler(async (req, res, next) => {
-    const {firstName, lastName, email, password, role} = req.body;
+    const {firstName, lastName, email, password, role, imageUrl} = req.body;
 
     const user = await User.create({
         firstName,
         lastName,
         email,
         password,
-        role
+        role,
+        imageUrl
     });
 
     sendTokenResponse(user,200,res);
