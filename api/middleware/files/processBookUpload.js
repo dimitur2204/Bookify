@@ -1,5 +1,5 @@
-const ErrorResponse = require("../../utils/error-response");
-const asyncHandler = require("./asyncHandlers");
+const ErrorResponse = require("../../../utils/error-response");
+const asyncHandler = require("../asyncHandlers");
 const { uploader, utils } = require("./cloudinary");
 const { dataUri } = require("./multer");
 
@@ -15,7 +15,7 @@ const processBookUpload = asyncHandler (async (req,res,next) => {
         const fullBook = req.files.fullBook[0];
         const fullBookUri = dataUri(fullBook).content;
         if (!(preview.mimetype === 'application/pdf' && fullBook.mimetype === 'application/pdf')) {
-            return next(new ErrorResponse('Please upload a pdf file.',400));
+            return next(new ErrorResponse('Please upload a pdf file.',415));
         }
         if(fullBook.size > process.env.MAX_FULL_UPLOAD){
             return next(new ErrorResponse
@@ -27,11 +27,13 @@ const processBookUpload = asyncHandler (async (req,res,next) => {
                 (`Please upload a file smaller than ${Math.round(process.env.MAX_FULL_UPLOAD / 1000000)}MB`,
                 400));
         }
-        const pdfInfos = await Promise.all([uploader.upload(previewUri,{type:'private',folder:'previews'}),uploader.upload(fullBookUri,{type:'private',folder:'full_books'})])
+        const pdfInfos = await Promise.all([
+            uploader.upload(previewUri,{type:'private'}),
+            uploader.upload(fullBookUri,{type:'private'})]);
         const previewInfo = pdfInfos[0];
         req.body.previewId = previewInfo.public_id;
         req.body.previewUrl = await utils.private_download_url(previewInfo.public_id,'pdf',{attachment:true,expires_at:NEVER_EXPIRE});
-        const fullBookInfo = await uploader.upload(fullBookUri,{type:'private',folder:'full_books'});
+        const fullBookInfo = pdfInfos[1];
         req.body.fullBookId = fullBookInfo.public_id;
         next();
         return;

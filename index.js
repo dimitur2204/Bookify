@@ -12,7 +12,7 @@ const db = require('./db');
 const api = require('./api');
 const {tapLog} = require('./utils/tap-log');
 const globalErrorHandler = require('./global-error-handler');
-const { cloudinaryConfig } = require('./api/middleware/cloudinary');
+const { cloudinaryConfig } = require('./api/middleware/files/cloudinary');
 const swaggerUi = require('swagger-ui-express');
 
 const app = express();
