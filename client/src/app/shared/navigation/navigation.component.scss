@@ -1,0 +1,22 @@
+@import '../variables';
+nav{
+  padding: 1.6rem 5.7rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+// Logo styles
+button[color=link]{
+  font-weight: bold;
+  font-size: 3rem;
+  strong{
+    color:$primary-color;
+  }
+  color: white;
+  -webkit-text-stroke: 0.5px $primary-color;
+}
+
+button:not(:first-child){
+  margin-left: 2rem;
+}
+

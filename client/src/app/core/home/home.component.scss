@@ -1,0 +1,55 @@
+@import '../../shared/variables';
+header{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
+}
+nav{
+    grid-column: span 2;
+    margin-bottom: 3rem;
+}
+.heading{
+    font-size: 4rem;
+    color: $primary-color;
+    line-height: 4rem;
+}
+.picture-heading{
+    position: relative;
+    text-align: left;
+    color: #fff;
+    img{
+        z-index: -1;
+        width: 100%;
+        height: auto;
+    }
+    h1{
+        position: absolute;
+        top: 8px;
+        left: 16px;
+        font-size: 4rem;
+        line-height: 4rem;
+    }
+    margin-right: 2rem;
+    height: 230px;
+    background-clip: border-box;
+}
+main{
+    position: relative;
+    text-align: left;
+    color:#fff;
+    margin-top: 5rem;
+    img{
+        width: 100%;
+        max-height: 40rem;
+    }
+    h1{
+        position: absolute;
+        bottom: 8px;
+        left: 16px;
+    }
+    button{
+        position: absolute;
+        bottom: 8px;
+        left: 16px;
+    }
+}
+
