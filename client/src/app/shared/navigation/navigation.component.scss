@@ -3,17 +3,22 @@ nav{
   padding: 1.6rem 5.7rem;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
+button{
+  border-radius: 100px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.5rem;
+}
 // Logo styles
 button[color=link]{
   font-weight: bold;
   font-size: 3rem;
-  strong{
-    color:$primary-color;
+  color:$primary-color;
+  span{
+    font-weight: 400;
   }
-  color: white;
-  -webkit-text-stroke: 0.5px $primary-color;
 }
 
 button:not(:first-child){
