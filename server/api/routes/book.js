@@ -9,10 +9,11 @@ const { protect,permitRoles,requireCreator  } = require('../middleware/auth');
 const { addUserToBody } = require('../middleware/body');
 const processImageUpload = require('../middleware/files/processImageUpload');
 const controllers = controllerFactory(Book);
+
 router.route('/')
     .get(protect, 
          permitRoles('user'), 
-         processQuery(Book,null),
+         processQuery(Book, null),
          controllers.getAll)
     .post(protect,
          permitRoles('author'),

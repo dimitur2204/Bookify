@@ -6,7 +6,6 @@ const addUserToBody = (req,res,next) => {
     next();
 }
 const modifyParamsForUser = (req,res,next) => {
-    console.log(req.user);
     req.params.id = req.user._id;
     next();
 }
