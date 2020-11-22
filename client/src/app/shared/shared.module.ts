@@ -2,27 +2,29 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+import {MatBadgeModule} from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
+import { SearchComponent } from './search/search.component';
 
 
 
 @NgModule({
-  declarations: [NavigationComponent, FooterComponent],
+  declarations: [NavigationComponent, FooterComponent, SearchComponent],
   imports: [
     CommonModule,
     RouterModule,
-    MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatBadgeModule,
+    MatCardModule
   ],
   exports:[
     NavigationComponent,
     FooterComponent,
+    SearchComponent
   ]
 })
 export class SharedModule { }
