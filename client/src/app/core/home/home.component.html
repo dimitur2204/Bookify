@@ -1,10 +1,5 @@
-<header>
-    <nav>
-        <app-navigation></app-navigation>
-    </nav>
-</header>
 <main>
-    <div class="group">
+    <div *ngIf="!isLogged" class="group">
         <button color="primary" mat-raised-button>Start reading now</button>
         <p>OR</p>
         <button id="author" color="primary" mat-raised-button>Register as an author</button>

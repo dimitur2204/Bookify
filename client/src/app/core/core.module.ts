@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
-import { AppModule } from '../app.module';
 import { SharedModule } from '../shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
+import { BookModule } from '../book/book.module';
 
 
 
@@ -12,7 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     SharedModule,
-    MatButtonModule
+    MatButtonModule,
+    BookModule
   ],
   exports:[HomeComponent]
 })

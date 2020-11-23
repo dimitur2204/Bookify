@@ -4,7 +4,7 @@
     <button (click)="loginHandler()" color="primary" mat-raised-button>Login</button>
     <button (click)="loginHandler()" color="primary" mat-raised-button>Register</button>
   </div>
-  <!-- <app-search *ngIf="isLogged"></app-search> -->
+  <app-search *ngIf="isLogged"></app-search>
   <div *ngIf="isLogged">
     <div class="wrapper">
       <a href="#"><mat-icon
@@ -12,7 +12,7 @@
         matBadgeColor="warn"
         color="primary"
         mat-icon-button>shopping_cart</mat-icon></a>
-      <a href="#"><img src="../../../assets/avatar.png" alt="Avatar" class="avatar"></a>
+      <a href="#"><img src="../../../assets/avatar.jpg" alt="Avatar" class="avatar"></a>
     </div>
   </div>
 </nav>
