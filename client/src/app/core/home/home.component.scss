@@ -1,4 +1,6 @@
-@import '../../shared/variables';
+@import '../../shared/scss/variables';
+@import '../../shared/scss/animations';
+@import '../../shared/scss/mixins';
 main{
     display:flex;
     height: 45rem;
@@ -22,10 +24,7 @@ main{
         animation: moveInBottom 1s ease;
         backface-visibility: hidden;
         &:hover{
-            background-color: $primary-color;
-            color: #fff;
-            box-shadow: 0 1rem 2rem rgba(#000, $alpha: 0.25);
-            transform: translateY(-2px);
+            @include animateHover()
         }
     }
     #author{
@@ -33,16 +32,6 @@ main{
         background-color: #fff;
         border: 1px solid $primary-color;
     }
-    @keyframes moveInBottom {
-        0%{
-            opacity: 0;
-            transform: translateY(3rem);
-        }
-    
-        100%{
-            opacity: 1;
-            transform: translate(0);
-        }
-    }
+
 }
 

@@ -9,11 +9,14 @@ const routes: Routes = [
     pathMatch:'full',
     component:HomeComponent
   },
+<<<<<<< HEAD
   {
     path:'auth',
     redirectTo:'/auth'
   },
   {path: '**', component: PageNotFoundComponent}
+=======
+>>>>>>> feat/navbar
 ];
 
 @NgModule({

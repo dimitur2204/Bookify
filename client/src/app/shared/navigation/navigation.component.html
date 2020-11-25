@@ -1,7 +1,18 @@
 <nav>
   <button id="logo" color="link" mat-button><strong>Book</strong><span>ify</span></button>
-  <div class="wrapper">
-    <button color="primary" mat-raised-button>Login</button>
-    <button color="primary" mat-raised-button>Register</button>
+  <div *ngIf="!isLogged" class="wrapper">
+    <button (click)="loginHandler()" color="primary" mat-raised-button>Login</button>
+    <button (click)="loginHandler()" color="primary" mat-raised-button>Register</button>
+  </div>
+  <app-search *ngIf="isLogged"></app-search>
+  <div *ngIf="isLogged">
+    <div class="wrapper">
+      <a href="#"><mat-icon
+        matBadge="5" 
+        matBadgeColor="warn"
+        color="primary"
+        mat-icon-button>shopping_cart</mat-icon></a>
+      <a href="#"><img src="../../../assets/avatar.jpg" alt="Avatar" class="avatar"></a>
+    </div>
   </div>
 </nav>
