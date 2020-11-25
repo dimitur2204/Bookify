@@ -1,0 +1,16 @@
+@import "../variables";
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+:host {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 30rem;
+}
+h1 {
+  font-family: "Varela Round";
+  align-self: center;
+  font-size: 5rem;
+  color: $primary-color;
+  text-align: center;
+}

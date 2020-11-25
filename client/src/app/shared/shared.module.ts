@@ -7,11 +7,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
 @NgModule({
-  declarations: [NavigationComponent, FooterComponent],
+  declarations: [NavigationComponent, FooterComponent, PageNotFoundComponent],
   imports: [
     CommonModule,
     RouterModule,
