@@ -1,18 +1,18 @@
-<nav>
-  <button id="logo" color="link" mat-button><strong>Book</strong><span>ify</span></button>
-  <div *ngIf="!isLogged" class="wrapper">
-    <button (click)="loginHandler()" color="primary" mat-raised-button>Login</button>
-    <button (click)="loginHandler()" color="primary" mat-raised-button>Register</button>
+<nav class="row m-3">
+  <button class="col-md-6 mb-3" id="logo" color="link" mat-button><strong>Book</strong><span>ify</span></button>
+  <div class="col-md-6 mt-2" *ngIf="!isLogged" class="wrapper">
+    <button (click)="loginHandler()" class="px-4 py-2" color="primary" mat-raised-button>Login</button>
+    <button (click)="loginHandler()" class="px-4 py-2 ml-4" color="primary" mat-raised-button>Register</button>
   </div>
-  <app-search *ngIf="isLogged"></app-search>
-  <div *ngIf="isLogged">
+  <app-search class="col-md-4 px-5 py-2" *ngIf="isLogged"></app-search>
+  <div class="col-md-2" *ngIf="isLogged">
     <div class="wrapper">
       <a href="#"><mat-icon
         matBadge="5" 
         matBadgeColor="warn"
         color="primary"
         mat-icon-button>shopping_cart</mat-icon></a>
-      <a href="#"><img src="../../../assets/avatar.jpg" alt="Avatar" class="avatar"></a>
+      <a href="#" class="ml-5 mb-1"><img src="../../../assets/avatar.jpg" alt="Avatar" class="avatar"></a>
     </div>
   </div>
 </nav>

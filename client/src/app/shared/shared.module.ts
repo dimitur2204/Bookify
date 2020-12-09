@@ -16,11 +16,7 @@ import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
-<<<<<<< HEAD
-  declarations: [NavigationComponent, FooterComponent, PageNotFoundComponent],
-=======
-  declarations: [NavigationComponent, FooterComponent, SearchComponent],
->>>>>>> feat/navbar
+  declarations: [NavigationComponent, FooterComponent, PageNotFoundComponent, SearchComponent],
   imports: [
     CommonModule,
     RouterModule,

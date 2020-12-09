@@ -6,11 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-<<<<<<< HEAD
 import { UserRoutingModule } from "./user/user-routing.module";
-=======
 import { BookModule } from './book/book.module';
->>>>>>> feat/navbar
 
 @NgModule({
   declarations: [
@@ -22,11 +19,8 @@ import { BookModule } from './book/book.module';
     BrowserAnimationsModule,
     SharedModule,
     CoreModule,
-<<<<<<< HEAD
-    UserRoutingModule
-=======
+    UserRoutingModule,
     BookModule
->>>>>>> feat/navbar
   ],
   providers: [],
   bootstrap: [AppComponent]
