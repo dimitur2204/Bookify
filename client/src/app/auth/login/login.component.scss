@@ -1,0 +1,16 @@
+@import '../../shared/scss/variables';
+form{
+    border: 2px solid $primary-color;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 50px;
+
+}
+.mat-form-field-label{
+    color: $accent-color!important;
+}
+
+:host{
+    display: flex;
+    justify-content: center;
+}

@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class AuthService {
   public isLogged:Subject<boolean> = new Subject<boolean>();
 
   constructor() { }

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { UserService } from 'src/app/user/user.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -22,18 +22,18 @@ export class NavigationComponent implements OnInit{
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private userService:UserService) {}
+    private authService:AuthService) {}
 
     ngOnInit(): void {
-      this.userService.isLogged.subscribe(logged => {
+      this.authService.isLogged.subscribe(logged => {
         this.isLogged = logged;
       })
     }
 
     loginHandler():void{
-      this.userService.logIn();
+      this.authService.logIn();
     }
     registerHandler():void{
-      this.userService.logIn();
+      this.authService.logIn();
     }
 }
