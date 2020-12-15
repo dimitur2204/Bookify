@@ -1,26 +1,37 @@
-@import "../scss/variables";
+@import '../scss/variables';
+nav{
+  padding: 1.6rem 5.7rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
-button {
+button{
   border-radius: 100px;
+  padding: 0.5rem 1.5rem;
   font-size: 1.5rem;
 }
-
-.wrapper {
-  margin: 0 auto;
-}
 // Logo styles
-button[color="link"] {
-  padding: 0;
+button[color=link]{
   font-weight: bold;
   font-size: 3rem;
-  color: $primary-color;
-  span {
+  color:$primary-color;
+  span{
     font-weight: 400;
   }
 }
 
-mat-icon {
+.wrapper{
+  justify-content: center;
+  align-items: center;
+  a{
+    margin-right:3rem;
+  }
+}
+
+mat-icon{
   top: 0.8rem;
+  margin-right: 1rem;
   font-size: 2.2rem;
 }
 
@@ -30,3 +41,8 @@ mat-icon {
   height: 50px;
   border-radius: 50%;
 }
+
+button:not(:first-child){
+  margin-left: 2rem;
+}
+

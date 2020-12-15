@@ -1,0 +1,20 @@
+<form #loginForm="ngForm" action="">
+    <div class="form-group">
+        <mat-form-field color="primary" appearance="outline">
+            <mat-label>Enter your email</mat-label>
+            <input name="email" #email="ngModel" #emailInput ngModel matInput placeholder="pat@example.com" required email>
+            <mat-error *ngIf="email.hasError('required')">You should provide an email</mat-error>
+            <mat-error *ngIf="email.hasError('email')">Enter a valid email</mat-error>
+        </mat-form-field>
+        <mat-form-field color="primary" appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input #password="ngModel" ngModel name="password" placeholder="Enter your password" matInput [type]="hidePass ? 'password' : 'text'" minlength="6" required>
+            <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+            <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="password.hasError('required')">You should provide a password</mat-error>
+            <mat-error *ngIf="password.hasError('minlength')">Password should be 6 or more symbols</mat-error>
+        </mat-form-field>
+        <button class="log-btn" mat-raised-button color="primary">Login</button>
+    </div>
+</form>

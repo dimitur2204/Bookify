@@ -2,7 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { UserService } from 'src/app/user/user.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -21,19 +22,18 @@ export class NavigationComponent implements OnInit{
   public isLogged:boolean = false;
 
   constructor(
+    private router:Router,
     private breakpointObserver: BreakpointObserver,
-    private userService:UserService) {}
+    private authService:AuthService) {}
 
     ngOnInit(): void {
-      this.userService.isLogged.subscribe(logged => {
+      this.authService.isLogged.subscribe(logged => {
         this.isLogged = logged;
       })
     }
 
-    loginHandler():void{
-      this.userService.logIn();
-    }
-    registerHandler():void{
-      this.userService.logIn();
+    isOnAuthPage(): boolean{
+      const currentUrl:string = this.router.url;
+      return (this.router.isActive('/auth/login',true) || this.router.isActive('/auth/register',true));
     }
 }

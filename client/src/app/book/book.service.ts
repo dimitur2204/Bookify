@@ -12,11 +12,11 @@ const apiUrl = environment.apiUrl;
 export class BookService {
 
   loadBooks():Observable<IBook[]>{
-    return this.http.get<IBook[]>(apiUrl+'/books');
+    return this.http.get<IBook[]>(apiUrl+'books');
   }
 
   loadBook(id:string):Observable<IBook>{
-    return this.http.get<IBook>(apiUrl+`/books/${id}`);
+    return this.http.get<IBook>(apiUrl+`books/${id}`);
   }
   constructor(private http: HttpClient) { }
 }

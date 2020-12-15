@@ -1,7 +1,14 @@
-<div class="book" *ngFor="let book of books">
-    <p>{{book.title}}</p>
-    <p>{{book.price}}</p>
-    <p>{{book.imageUrl}}</p>
-    <p>{{book.previewUrl}}</p>
-    <p>{{book._id}}</p>
-</div>
+<mat-grid-list cols="12" rowHeight="100px">
+    <mat-grid-tile
+        [colspan]="3"
+        [rowspan]="1"
+        [style.background]='"lightblue"'>
+      <app-book-list-item></app-book-list-item>
+    </mat-grid-tile>
+    <mat-grid-tile
+        [colspan]="9"
+        [rowspan]="1"
+        [style.background]="'lightgreen'">
+        <app-book-list-item></app-book-list-item>
+    </mat-grid-tile>
+</mat-grid-list>

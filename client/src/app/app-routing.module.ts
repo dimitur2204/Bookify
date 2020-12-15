@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { BookListComponent } from './book/book-list/book-list.component';
 import { HomeComponent } from './core/home/home.component';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { UserRoutingModule } from './user/user-routing.module';
 
 const routes: Routes = [
   {
@@ -12,17 +13,34 @@ const routes: Routes = [
     component:HomeComponent
   },
   {
-    path:'books',
-    component:BookListComponent
+    path:'auth',
+    children:[
+      {
+        path:'login',
+        component:LoginComponent
+      },
+      {
+        path:'register',
+        component:RegisterComponent
+      }
+    ]
   },
-  {path: '**', component: PageNotFoundComponent}
+  {
+    path:'books',
+    pathMatch:'full',
+    component:BookListComponent,
+    children:[
+      {
+        path:':id',
+        component:BookListComponent,
+      }
+    ],
+    canActivate:[AuthGuard]
+  }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes),
-    UserRoutingModule
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
