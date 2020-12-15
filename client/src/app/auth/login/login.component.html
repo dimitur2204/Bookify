@@ -5,16 +5,6 @@
             <input name="email" #emailInput ngModel matInput placeholder="pat@example.com" required>
             <mat-error *ngIf="">Invalid email</mat-error>
         </mat-form-field>
-        <mat-form-field  color="primary" appearance="outline">
-            <mat-label>Enter your first name</mat-label>
-            <input name="firstName" #firstNameInput ngModel matInput placeholder="John" required>
-            <mat-error *ngIf="">Invalid name</mat-error>
-        </mat-form-field>
-        <mat-form-field color="primary" appearance="outline">
-            <mat-label>Enter your last name</mat-label>
-            <input name="lastName" #lastNameInput ngModel matInput placeholder="Doe" required>
-            <mat-error *ngIf="">Invalid name</mat-error>
-          </mat-form-field>
         <mat-form-field color="primary" appearance="fill">
             <mat-label>Enter your password</mat-label>
             <input name="password" placeholder="Enter your password" matInput [type]="hidePass ? 'password' : 'text'">
@@ -22,10 +12,6 @@
             <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
-        <mat-radio-group color="primary" aria-label="Select an option">
-            <mat-radio-button cdkAutofill value="author">Author</mat-radio-button>
-            <mat-radio-button value="user">User</mat-radio-button>
-        </mat-radio-group>
-        <button class="reg-btn" mat-raised-button color="primary">Register</button>
+        <button class="log-btn" mat-raised-button color="primary">Login</button>
     </div>
 </form>

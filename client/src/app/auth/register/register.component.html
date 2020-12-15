@@ -1,0 +1,32 @@
+<form #registerForm="ngForm" action="">
+    <div class="form-group">
+        <mat-form-field color="primary" appearance="outline">
+            <mat-label>Enter your email</mat-label>
+            <input #email="ngModel" name="email" #emailInput ngModel matInput placeholder="pat@example.com" required email>
+            <mat-error *ngIf="email.invalid">Invalid email</mat-error>
+        </mat-form-field>
+        <mat-form-field  color="primary" appearance="outline">
+            <mat-label>Enter your first name</mat-label>
+            <input #firstName="ngModel" name="firstName" #firstNameInput ngModel matInput placeholder="John" required minlength="2">
+            <mat-error *ngIf="">Invalid name</mat-error>
+        </mat-form-field>
+        <mat-form-field color="primary" appearance="outline">
+            <mat-label>Enter your last name</mat-label>
+            <input #lastName="ngModel" name="lastName" #lastNameInput ngModel matInput placeholder="Doe" required minlength="2">
+            <mat-error *ngIf="">Invalid name</mat-error>
+        </mat-form-field>
+        <mat-form-field color="primary" appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input ngModel #password="ngModel" name="password" placeholder="Enter your password" matInput [type]="hidePass ? 'password' : 'text'" minlength="6">
+            <button mat-icon-button matSuffix (click)="hidePass = !hidePass" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePass">
+            <mat-icon>{{hidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <mat-error *ngIf="password.invalid">Invalid password</mat-error>
+            </button>
+        </mat-form-field>
+        <mat-radio-group ngModel #role="ngModel" color="primary" aria-label="Select an option">
+            <mat-radio-button cdkAutofill value="author">Author</mat-radio-button>
+            <mat-radio-button value="user">User</mat-radio-button>
+        </mat-radio-group>
+        <button [disabled]="registerForm.invalid" class="reg-btn" mat-raised-button color="primary">Register</button>
+    </div>
+</form>
