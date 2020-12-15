@@ -12,9 +12,11 @@ form{
 }
 mat-form-field{
     display: block;
+    margin-top: 20px;
 }
 mat-radio-button:nth-child(2){
     margin-left: 10px;
+    margin-top: 20px;
 }
 :host{
     display: flex;
@@ -23,4 +25,15 @@ mat-radio-button:nth-child(2){
 .reg-btn{
     margin-top: 50px;
     @include global-button();
+}
+.loader{
+    &-wrapper{
+        text-align: center;
+    }
+}
+.form-error{
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
 }

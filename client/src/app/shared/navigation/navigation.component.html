@@ -1,8 +1,8 @@
 <nav>
   <button id="logo" color="link" mat-button><strong>Book</strong><span>ify</span></button>
   <div *ngIf="!isLogged" class="wrapper">
-    <button (click)="loginHandler()" color="primary" mat-raised-button>Login</button>
-    <button (click)="loginHandler()" color="primary" mat-raised-button>Register</button>
+    <button *ngIf="!isOnAuthPage()" routerLink="/auth/login" color="primary" mat-raised-button>Login</button>
+    <button *ngIf="!isOnAuthPage()" routerLink="/auth/register" color="primary" mat-raised-button>Register</button>
   </div>
   <app-search *ngIf="isLogged"></app-search>
   <div *ngIf="isLogged">

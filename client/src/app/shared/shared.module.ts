@@ -1,21 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { RouterModule } from '@angular/router';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchComponent } from './search/search.component';
+import { LoaderComponent } from './loader/loader.component';
 
 
 
 @NgModule({
-  declarations: [NavigationComponent, FooterComponent, SearchComponent],
+  declarations: [NavigationComponent, FooterComponent, SearchComponent, LoaderComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -28,7 +29,8 @@ import { SearchComponent } from './search/search.component';
   exports:[
     NavigationComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }

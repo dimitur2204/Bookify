@@ -10,6 +10,8 @@ import { CoreModule } from './core/core.module';
 import { BookModule } from './book/book.module';
 import { FormsModule } from '@angular/forms';
 import { AuthModule } from './auth/auth.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorInterceptor } from './shared/interceptors/http-error-interceptor';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,13 @@ import { AuthModule } from './auth/auth.module';
     FormsModule,
   ],
   exports:[],
-  providers: [],
+  providers:[
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
