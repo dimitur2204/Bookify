@@ -1,4 +1,4 @@
-<form #loginForm="ngForm" action="">
+<form #loginForm="ngForm" (ngSubmit)="submitHandler(loginForm)" action="">
     <div class="form-group">
         <mat-form-field color="primary" appearance="outline">
             <mat-label>Enter your email</mat-label>
@@ -15,6 +15,10 @@
             <mat-error *ngIf="password.hasError('required')">You should provide a password</mat-error>
             <mat-error *ngIf="password.hasError('minlength')">Password should be 6 or more symbols</mat-error>
         </mat-form-field>
-        <button class="log-btn" mat-raised-button color="primary">Login</button>
+        <button [disabled]="loginForm.invalid || isLoading" class="log-btn" mat-raised-button color="primary">Login</button>
     </div>
+    <div *ngIf="isLoading" class="loader-wrapper">
+        <app-loader class="loader"></app-loader>
+    </div>
+    <mat-error class="form-error" *ngIf="errorToShow">{{errorToShow}}</mat-error>
 </form>

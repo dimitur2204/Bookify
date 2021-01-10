@@ -1,6 +1,7 @@
 @import '../../shared/scss/variables';
 @import '../../shared/scss/animations';
 @import '../../shared/scss/mixins';
+  
 main{
     display:flex;
     height: 45rem;
@@ -32,6 +33,5 @@ main{
         background-color: #fff;
         border: 1px solid $primary-color;
     }
-
 }
 

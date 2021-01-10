@@ -12,11 +12,12 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchComponent } from './search/search.component';
 import { LoaderComponent } from './loader/loader.component';
+import { SideFilterComponent } from './side-filter/side-filter.component';
 
 
 
 @NgModule({
-  declarations: [NavigationComponent, FooterComponent, SearchComponent, LoaderComponent],
+  declarations: [NavigationComponent, FooterComponent, SearchComponent, LoaderComponent, SideFilterComponent],
   imports: [
     CommonModule,
     RouterModule,

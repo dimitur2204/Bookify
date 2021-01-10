@@ -7,6 +7,7 @@ import {environment} from '../../environments/environment';
 import { IAuthResponse } from '../shared/interfaces/authResponse';
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { ILoginInfo } from '../shared/interfaces/loginInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -28,11 +29,11 @@ export class AuthService {
     return this.http.post<IAuthResponse>(environment.apiUrl+'/auth/register',userInfo, {withCredentials:true});
   }
 
-  logIn():void{
-    
+  login(userInfo:ILoginInfo):Observable<IAuthResponse>{
+    return this.http.post<IAuthResponse>(environment.apiUrl+'/auth/login',userInfo, {withCredentials:true});
   }
 
-  logOut():void{
+  logout():void{
     
   }
 }

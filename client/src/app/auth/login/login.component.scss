@@ -26,3 +26,14 @@ mat-radio-button:nth-child(2){
     margin-top: 50px;
     @include global-button();
 }
+.loader{
+    &-wrapper{
+        text-align: center;
+    }
+}
+.form-error{
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+}
