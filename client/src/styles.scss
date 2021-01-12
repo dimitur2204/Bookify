@@ -1,19 +1,1 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./app/shared/scss/variables";
-html, body { height: 100%; }
-body { z-index: -1; background: rgba($color:$dark-gray , $alpha: 0.4); margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-body:after {
-    content : "";
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: url('./assets/undraw_education_f8ru\ 1\ \(1\).svg'); 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-    opacity : 0.5;
-    z-index: -1;
-}
