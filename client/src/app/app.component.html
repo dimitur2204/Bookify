@@ -1,24 +1,9 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav role="navigation">
-        <p>Sidenav here</p>
+        <app-sidenav-list (sidenavClose)="sidenav.close()"></app-sidenav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <mat-toolbar color="primary">
-            <div>
-                <div>
-                    <button mat-icon-button (click)="sidenav.toggle()">
-                        <mat-icon>menu</mat-icon>
-                    </button>
-                </div>
-                <div>LOGO</div>
-                <div fxFlex fxLayout fxLayoutAlign="flex-end">
-                    <a routerLink="/signup">Signup</a>
-                    <a routerLink="/login">Login</a>
-                    <a routerLink="/books">Books</a>
-                    <a ></a>
-                </div>
-            </div>
-        </mat-toolbar>
+        <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
         <main>
             <router-outlet>
             </router-outlet>

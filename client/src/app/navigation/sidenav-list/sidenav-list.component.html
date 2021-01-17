@@ -1,0 +1,20 @@
+<mat-nav-list>
+    <a mat-list-item routerLink="/signup" (click)="sidenavClose.emit()">
+        <mat-icon>face</mat-icon>
+        <span class="nav-caption">Signup</span>
+    </a>
+    <a mat-list-item routerLink="/login" (click)="sidenavClose.emit()">
+        <mat-icon>login</mat-icon>
+        <span class="nav-caption">Login</span>
+    </a>
+    <a mat-list-item routerLink="/books" (click)="sidenavClose.emit()">
+        <mat-icon>book</mat-icon>
+        <span class="nav-caption">Books</span>
+    </a>
+    <mat-list-item (click)="sidenavClose.emit()">
+        <button mat-icon-button>
+            <mat-icon>eject</mat-icon>
+            <span class="nav-caption">Logout</span>
+        </button>
+    </mat-list-item>
+</mat-nav-list>

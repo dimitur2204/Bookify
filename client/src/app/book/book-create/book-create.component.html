@@ -1,1 +1,21 @@
-<p>book-create works!</p>
+<section class="create-book" fxLayout fxLayoutAlign="center">
+    <mat-card fxFlex.xs="100%" fxLayoutGap="30px" fxFlex="400px" fxLayout="column" fxLayoutAlign="center center">
+        <mat-card-title >Publish your book</mat-card-title>
+        <mat-card-content>
+            <form action="">
+                <mat-form-field  appearance="fill">
+                    <mat-label>Categories</mat-label>
+                    <mat-select placeholder="Choose your categories" ngModel name="categories" multiple>
+                        <mat-option value="Some categoire">Some categoire</mat-option>
+                        <mat-option value="Some categoire">Some categoire</mat-option>
+                        <mat-option value="Some categoire">Some categoire</mat-option>
+                        <mat-option value="Some categoire">Some categoire</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions>
+            <button type="submit" mat-button>Publish</button>
+        </mat-card-actions>
+    </mat-card>
+</section>
