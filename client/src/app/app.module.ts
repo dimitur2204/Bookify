@@ -19,6 +19,9 @@ import { BookComponent } from './book/book/book.component';
 import { BookDetailsComponent } from './book/book-details/book-details.component';
 import { BookCreateComponent } from './book/book-create/book-create.component';
 import { BookListComponent } from './book/book-list/book-list.component';
+import { HeaderComponent } from './navigation/header/header.component';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { MyBooksListComponent } from './book/my-books-list/my-books-list.component';
 
 
 
@@ -31,7 +34,10 @@ import { BookListComponent } from './book/book-list/book-list.component';
     BookDetailsComponent,
     BookCreateComponent,
     BookListComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    HeaderComponent,
+    SidenavListComponent,
+    MyBooksListComponent
   ],
   imports: [
     BrowserModule,

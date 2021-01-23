@@ -12,4 +12,7 @@ export class BookCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handleFileInput(files:File[]){
+    console.log(files);
+  }
 }

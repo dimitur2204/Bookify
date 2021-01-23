@@ -16,8 +16,14 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Amount</mat-label>
-                    <input matInput type="number" class="example-right-align">
-                    <mat-error *ngIf="title.hasError('required')">Field must not be empty</mat-error>
+                    <input type="number"
+                    matInput 
+                    placeholder="Price" 
+                    ngModel 
+                    name="price"
+                    #price="ngModel"
+                    required>
+                    <mat-error *ngIf="price.hasError('required')">Field must not be empty</mat-error>
                     <span matPrefix><mat-icon>attach_money</mat-icon></span>
                   </mat-form-field>
                 <mat-form-field  appearance="fill">

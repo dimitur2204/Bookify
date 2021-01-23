@@ -13,6 +13,28 @@
              <mat-error *ngIf="emailInput.hasError('required')">Field must not be empty</mat-error>
              <mat-error *ngIf="!emailInput.hasError('required')">E-mail is invalid</mat-error>
         </mat-form-field>
+        <mat-form-field>
+            <input
+             type="text"
+             matInput 
+             placeholder="Your first name" 
+             ngModel 
+             name="firstName"
+             #firstNameInput="ngModel"
+             required>
+             <mat-error *ngIf="firstNameInput.hasError('required')">Field must not be empty</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input
+             type="text"
+             matInput 
+             placeholder="Your last name" 
+             ngModel 
+             name="lastName"
+             #lastNameInput="ngModel"
+             required>
+             <mat-error *ngIf="lastNameInput.hasError('required')">Field must not be empty</mat-error>
+        </mat-form-field>
         <mat-form-field hintLabel="Should be at least 6 characters long">
             <input
              type="password" 
@@ -25,10 +47,10 @@
              #pwInput="ngModel">
              <mat-hint align="end">{{pwInput.value?.length}} / 6</mat-hint>
         </mat-form-field>
-        <mat-radio-group fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start start" fxFlexAlign="center" name="role" required ngModel aria-label="Select an option">
-            <mat-radio-button value="1">Option 1</mat-radio-button>
-            <mat-radio-button value="2">Option 2</mat-radio-button>
-          </mat-radio-group>
-        <button [disabled]="f.invalid" type="submit" mat-raised-button color="accent">Submit</button>
+        <mat-radio-group fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="start start" fxFlexAlign="center" ngModel #role="ngModel" name="role" required color="primary" aria-label="Select an option">
+            <mat-radio-button value="author">Author</mat-radio-button>
+            <mat-radio-button checked value="user">User</mat-radio-button>
+        </mat-radio-group>
+        <button [disabled]="f.invalid" type="submit" mat-raised-button color="primary">Sign up</button>
     </form>
 </section>

@@ -1,0 +1,16 @@
+<mat-toolbar fxFlex.xs fxLayout="row" fxLayoutAlign="space-between center" color="primary">
+    <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+    <div><a fxLayout fxLayoutAlign="flex-end" mat-icon-button routerLink="/"><mat-icon>menu_book</mat-icon></a></div>
+    <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="20px" class="nav-items">
+            <li *ngIf="!isAuth"><a color="accent" mat-raised-button routerLink="/signup">Signup</a></li>
+            <li *ngIf="!isAuth"><a color="accent" mat-raised-button routerLink="/login">Login</a></li>
+            <li *ngIf="isAuth"><a color="accent" mat-raised-button routerLink="/books">Books</a></li>
+            <li *ngIf="isAuth"><a color="accent" mat-raised-button (click)="onLogoutClick()">Logout</a></li>
+        </ul>      
+    </div>
+</mat-toolbar>

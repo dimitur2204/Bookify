@@ -10,10 +10,17 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import { MatUploadComponent } from './mat-upload/mat-upload.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
@@ -21,7 +28,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatGridListModule,
     MatRadioModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule,
+    MatTabsModule,
+    MatCardModule,
+    MatSelectModule
   ],
   exports:[
     MatButtonModule,
@@ -31,7 +42,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatGridListModule,
     MatRadioModule,
     MatSidenavModule,
-    MatToolbarModule
-  ]
+    MatToolbarModule,
+    MatListModule,
+    MatTabsModule,
+    MatCardModule,
+    MatSelectModule,
+  ],
+  declarations: [MatUploadComponent]
 })
 export class MaterialModule { }
