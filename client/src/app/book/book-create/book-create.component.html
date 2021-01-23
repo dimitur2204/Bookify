@@ -3,6 +3,23 @@
         <mat-card-title >Publish your book</mat-card-title>
         <mat-card-content>
             <form action="">
+                <mat-form-field>
+                    <input
+                     type="text"
+                     matInput 
+                     placeholder="Title" 
+                     ngModel 
+                     name="title"
+                     #title="ngModel"
+                     required>
+                     <mat-error *ngIf="title.hasError('required')">Field must not be empty</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Amount</mat-label>
+                    <input matInput type="number" class="example-right-align">
+                    <mat-error *ngIf="title.hasError('required')">Field must not be empty</mat-error>
+                    <span matPrefix><mat-icon>attach_money</mat-icon></span>
+                  </mat-form-field>
                 <mat-form-field  appearance="fill">
                     <mat-label>Categories</mat-label>
                     <mat-select placeholder="Choose your categories" ngModel name="categories" multiple>
