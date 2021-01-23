@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Form } from '@angular/forms';
+import { Categories } from '../enums/categories';
 
 @Component({
   selector: 'app-book-create',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookCreateComponent implements OnInit {
 
-  constructor() { }
+  categories:String[];
+
+  constructor() { 
+    this.categories = [];
+  }
 
   ngOnInit(): void {
+    this.categories = Object
+      .keys(Categories)
+      .filter(c => typeof Categories[c as any] !== 'string');
+  }
+
+  onSubmit(form:Form){
+
   }
 
   handleFileInput(files:File[]){

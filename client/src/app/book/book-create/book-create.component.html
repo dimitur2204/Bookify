@@ -1,18 +1,18 @@
 <section class="create-book" fxLayout fxLayoutAlign="center">
-    <mat-card fxFlex.xs="100%" fxLayoutGap="30px" fxFlex="400px" fxLayout="column" fxLayoutAlign="center center">
-        <mat-card-title >Publish your book</mat-card-title>
-        <mat-card-content>
-            <form action="">
+    <form #form="ngForm" action="" (ngSubmit)="onSubmit(form)">
+        <mat-card fxFlex.xs="100%" fxLayoutGap="30px" fxFlex="400px" fxLayout="column" fxLayoutAlign="center center">
+            <mat-card-title >Publish your book</mat-card-title>
+            <mat-card-content>
                 <mat-form-field>
                     <input
-                     type="text"
-                     matInput 
-                     placeholder="Title" 
-                     ngModel 
-                     name="title"
-                     #title="ngModel"
-                     required>
-                     <mat-error *ngIf="title.hasError('required')">Field must not be empty</mat-error>
+                        type="text"
+                        matInput 
+                        placeholder="Title" 
+                        ngModel 
+                        name="title"
+                        #title="ngModel"
+                        required>
+                        <mat-error *ngIf="title.hasError('required')">Field must not be empty</mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Amount</mat-label>
@@ -25,20 +25,17 @@
                     required>
                     <mat-error *ngIf="price.hasError('required')">Field must not be empty</mat-error>
                     <span matPrefix><mat-icon>attach_money</mat-icon></span>
-                  </mat-form-field>
+                    </mat-form-field>
                 <mat-form-field  appearance="fill">
                     <mat-label>Categories</mat-label>
                     <mat-select placeholder="Choose your categories" ngModel name="categories" multiple>
-                        <mat-option value="Some categoire">Some categoire</mat-option>
-                        <mat-option value="Some categoire">Some categoire</mat-option>
-                        <mat-option value="Some categoire">Some categoire</mat-option>
-                        <mat-option value="Some categoire">Some categoire</mat-option>
+                        <mat-option *ngFor="let categorie of categories" value="Some categoire">{{categorie}}</mat-option>
                     </mat-select>
                 </mat-form-field>
-            </form>
-        </mat-card-content>
-        <mat-card-actions>
-            <button type="submit" mat-button>Publish</button>
-        </mat-card-actions>
-    </mat-card>
+            </mat-card-content>
+            <mat-card-actions>
+                <button type="submit" mat-button [disabled]="form.invalid">Publish</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
 </section>

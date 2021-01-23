@@ -14,8 +14,12 @@ import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
 import { MatUploadComponent } from './mat-upload/mat-upload.component';
 import { FormsModule } from '@angular/forms';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -32,7 +36,11 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     MatTabsModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
   exports:[
     MatButtonModule,
@@ -47,6 +55,11 @@ import { FormsModule } from '@angular/forms';
     MatTabsModule,
     MatCardModule,
     MatSelectModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule
+
   ],
   declarations: [MatUploadComponent]
 })

@@ -1,5 +1,4 @@
-import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
-import { EventEmitter } from 'events';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-mat-upload',
@@ -13,14 +12,11 @@ export class MatUploadComponent implements OnInit {
   @ViewChild('UploadFileInput') uploadFileInput: ElementRef;
   myfilename = 'Select File';
 
-  @Output('uploadedFiles') uploadEvent: EventEmitter;
-
   private filesUploaded: File[];
 
   constructor(){
     this.uploadFileInput = new ElementRef('');
     this.filesUploaded = [];
-    this.uploadEvent = new EventEmitter();
   }
 
   ngOnInit(): void {
