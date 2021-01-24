@@ -24,6 +24,7 @@ import { BookListItemComponent } from './book/book-list-item/book-list-item.comp
 import { FilterComponent } from './book/filter/filter.component';
 import { ShoppingCartComponent } from './navigation/shopping-cart/shopping-cart.component';
 import { CartComponent } from './shopping/cart/cart.component';
+import { CartItemComponent } from './shopping/cart-item/cart-item.component';
 
 
 
@@ -42,7 +43,8 @@ import { CartComponent } from './shopping/cart/cart.component';
     BookListItemComponent,
     FilterComponent,
     ShoppingCartComponent,
-    CartComponent
+    CartComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,

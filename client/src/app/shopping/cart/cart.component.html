@@ -1,1 +1,19 @@
-<app-book-list></app-book-list>
+<div fxLayoutAlign="center center">
+    <mat-card fxFlex="90%">
+        <mat-card-header>
+            <mat-card-title>
+                Your shopping cart
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content fxLayout="row wrap" fxLayoutAlign.xs="center center" fxLayout.xs="column">
+            <app-cart-item fxFlex.gt-xs="50%" fxFlex.gt-md="33%"></app-cart-item>
+            <app-cart-item fxFlex.gt-xs="50%" fxFlex.gt-md="33%"></app-cart-item>
+            <app-cart-item fxFlex.gt-xs="50%" fxFlex.gt-md="33%"></app-cart-item>
+            <app-cart-item fxFlex.gt-xs="50%" fxFlex.gt-md="33%"></app-cart-item>
+        </mat-card-content>
+        <mat-card-actions fxLayout="column" fxLayoutAlign="center center">
+            <button fxFlex="100%" class="checkout-button" mat-raised-button color="primary">Proceed to checkout</button>
+            <h2 class="price-label">Total price: 55$</h2>
+        </mat-card-actions>
+    </mat-card>
+</div>
