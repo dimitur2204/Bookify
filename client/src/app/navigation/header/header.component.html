@@ -9,6 +9,11 @@
         <ul fxLayout fxLayoutGap="20px" class="nav-items">
             <li *ngIf="!isAuth"><a color="accent" mat-raised-button routerLink="/signup">Signup</a></li>
             <li *ngIf="!isAuth"><a color="accent" mat-raised-button routerLink="/login">Login</a></li>
+            <li *ngIf="isAuth">
+                <a class="shopping-cart-button" fxLayoutAlign="center center" mat-icon-button color="accent" aria-label="Example icon button with a menu icon" routerLink="/cart">
+                    <app-shopping-cart></app-shopping-cart>
+                </a>
+            </li>
             <li *ngIf="isAuth"><a color="accent" mat-raised-button routerLink="/books">Books</a></li>
             <li *ngIf="isAuth"><a color="accent" mat-raised-button (click)="onLogoutClick()">Logout</a></li>
         </ul>      

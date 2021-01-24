@@ -22,6 +22,8 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { BookListItemComponent } from './book/book-list-item/book-list-item.component';
 import { FilterComponent } from './book/filter/filter.component';
+import { ShoppingCartComponent } from './navigation/shopping-cart/shopping-cart.component';
+import { CartComponent } from './shopping/cart/cart.component';
 
 
 
@@ -38,7 +40,9 @@ import { FilterComponent } from './book/filter/filter.component';
     HeaderComponent,
     SidenavListComponent,
     BookListItemComponent,
-    FilterComponent
+    FilterComponent,
+    ShoppingCartComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
