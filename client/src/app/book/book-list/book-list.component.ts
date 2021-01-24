@@ -1,8 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
 import { BookService } from '../book.service';
-import { IBook } from '../interfaces/book';
 
 @Component({
   selector: 'app-book-list',
@@ -11,26 +8,22 @@ import { IBook } from '../interfaces/book';
 })
 export class BookListComponent implements OnInit, AfterViewInit {
 
-  @ViewChild(MatSort) sort: MatSort | null;
-
-  displayedColumns = ['date','title','price'];
-  
-  dataSource = new MatTableDataSource<IBook>();
+  regularDistribution = 100 / 3;
 
   constructor(private bookService: BookService) {
-    this.sort = null;
+    
   }
 
   ngOnInit(): void {
-    this.dataSource.data = this.bookService.getBooks();
+    
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
+    
   }
 
   filterTable(filter:string){
-    this.dataSource.filter = filter.trim().toLowerCase();
+    
   }
 
 }
