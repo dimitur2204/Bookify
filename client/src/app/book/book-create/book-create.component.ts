@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Form } from '@angular/forms';
+import { BookService } from '../book.service';
 import { Categories } from '../enums/categories';
 
 @Component({
@@ -11,14 +12,12 @@ export class BookCreateComponent implements OnInit {
 
   categories:String[];
 
-  constructor() { 
+  constructor(private bookService:BookService) { 
     this.categories = [];
   }
 
   ngOnInit(): void {
-    this.categories = Object
-      .keys(Categories)
-      .filter(c => typeof Categories[c as any] !== 'string');
+    this.categories = this.bookService.getCategories();
   }
 
   onSubmit(form:Form){
