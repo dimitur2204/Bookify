@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Filters</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="column">
+        <mat-form-field appearance="fill">
+            <mat-label>Search</mat-label>
+            <input matInput>
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Categories
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-selection-list fxLayout="row wrap" fxLayoutAlign.xs="center center" fxLayout.xs="column">
+                <mat-list-option fxFlex.gt-xs="50%" fxFlex.gt-md="20%" *ngFor="let categorie of categories">
+                    {{categorie}}
+                </mat-list-option>
+            </mat-selection-list>
+          </mat-expansion-panel>
+    </mat-card-content>
+    <mat-card-actions>
+        <button fxFlex="100%" color="warn" mat-raised-button color="primary">Apply filters</button>
+    </mat-card-actions>
+</mat-card>

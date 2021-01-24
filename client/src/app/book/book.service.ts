@@ -25,4 +25,10 @@ export class BookService {
       }
     ]
   }
+
+  getCategories():string[]{
+    return Object
+      .keys(Categories)
+      .filter(c => typeof Categories[c as any] !== 'string');
+  }
 }

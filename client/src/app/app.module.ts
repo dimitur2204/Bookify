@@ -21,6 +21,7 @@ import { BookListComponent } from './book/book-list/book-list.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { BookListItemComponent } from './book/book-list-item/book-list-item.component';
+import { FilterComponent } from './book/filter/filter.component';
 
 
 
@@ -36,7 +37,8 @@ import { BookListItemComponent } from './book/book-list-item/book-list-item.comp
     WelcomeComponent,
     HeaderComponent,
     SidenavListComponent,
-    BookListItemComponent
+    BookListItemComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
