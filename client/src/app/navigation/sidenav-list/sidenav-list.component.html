@@ -11,6 +11,10 @@
         <mat-icon>book</mat-icon>
         <span class="nav-caption">Books</span>
     </a>
+    <a *ngIf="isAuth" mat-list-item routerLink="/cart" (click)="sidenavClose.emit()">
+        <app-shopping-cart></app-shopping-cart>
+        <span class="nav-caption">Shopping cart</span>
+    </a>
     <mat-list-item *ngIf="isAuth" (click)="onLogoutClick()">
         <button mat-icon-button>
             <mat-icon>eject</mat-icon>
