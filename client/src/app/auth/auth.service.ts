@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { Roles } from './enums/roles';
 import { ILoginData } from './interfaces/loginData';
 import { IRegisterData } from './interfaces/registerData';
 import { IUser } from './interfaces/user';
@@ -11,29 +12,28 @@ import { IUser } from './interfaces/user';
 export class AuthService {
 
   authChange = new Subject<boolean>();
-  private user:IUser | null;
+
+  private user:IUser|null;
 
   constructor(private router:Router) { 
-    this.user = null;
-  }
+    this.user = {
+      email: 'dimitur2204@gmail.com',
+      firstName: 'Dimitar',
+      lastName: 'Nizamov',
+      password:'123465',
+      role:Roles.author,
+      id: '1',
+      books:[],
+      createdAt:new Date(),
+      imageUrl:'',
+    }
+  };
 
   register(authData: IRegisterData){
-    this.user = {
-      email: authData.email,
-      firstName: authData.firstName,
-      lastName: authData.lastName,
-      id: Math.round(Math.random() * 10000).toString()
-    }
     this.authSuccess();
   }
 
   login(authData: ILoginData){
-    this.user = {
-      email: authData.email,
-      firstName: '',
-      lastName: '',
-      id: Math.round(Math.random() * 10000).toString()
-    }
     this.authSuccess();
   }
 

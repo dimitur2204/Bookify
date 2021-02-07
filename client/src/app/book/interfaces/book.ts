@@ -1,8 +1,17 @@
+import { IUser } from "src/app/auth/interfaces/user";
 import { Categories } from "../enums/categories";
 
 export interface IBook{
-    title:String;
-    price:Number;
-    categories:Categories[];
-    createdAt:Date;
+    id:String;
+    title: String;
+	description: String;
+	imageUrl?: String;
+	imageId?: String;
+	user: IUser;
+	price: Number;
+	categories: Categories[];
+	previewUrl?:String;
+	previewId?:String;
+	buyers: IUser[];
+	createdAt:Date;
 }
