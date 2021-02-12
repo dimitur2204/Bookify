@@ -12,7 +12,10 @@ const router = Router();
 const controllers = {...controllerFactory(User),...authControllers};
 
 router.route('/register')
-    .post(multerUploads,processImageUpload,controllers.register);
+    .post(
+        //multerUploads,
+        //processImageUpload,
+        controllers.register);
 
 router.route('/login')
     .post(controllers.login);

@@ -32,6 +32,17 @@
                         <mat-option *ngFor="let categorie of categories" value="Some categoire">{{categorie}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <mat-form-field class="desc-field" appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea type="text"
+                    matInput 
+                    placeholder="Description" 
+                    ngModel 
+                    name="description"
+                    #description="ngModel"
+                    required></textarea>
+                    <mat-error *ngIf="price.hasError('required')">Field must not be empty</mat-error>
+                  </mat-form-field>
             </mat-card-content>
             <mat-card-actions>
                 <button type="submit" mat-button [disabled]="form.invalid">Publish</button>

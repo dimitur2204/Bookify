@@ -4,8 +4,11 @@ const { uploader} = require("./cloudinary");
 const { dataUri } = require("./multer");
 
 const processImageUpload = asyncHandler(async(req,res,next) => {
-    const image = req.files.image[0];
+    const image = req.files ? req.files.image[0] : null;
     const imageUri = dataUri(image).content;
+    if (!image) {
+        return next(new ErrorResponse('Please upload a file'), 400);
+    }
     if (!image.mimetype.startsWith('image/')) {
         return next(new ErrorResponse('Please upload an image file.',415));
     }

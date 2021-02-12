@@ -11,6 +11,11 @@ const bookSchema = new Schema({
         type:String,
         default:'no-image.jpg'
     },
+    description:{
+        type:String,
+        required:true,
+        maxlength:350
+    },
     imageId:{
         type:String,
         required:true

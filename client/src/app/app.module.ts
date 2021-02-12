@@ -25,6 +25,7 @@ import { FilterComponent } from './book/filter/filter.component';
 import { ShoppingCartComponent } from './navigation/shopping-cart/shopping-cart.component';
 import { CartComponent } from './shopping/cart/cart.component';
 import { CartItemComponent } from './shopping/cart-item/cart-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -50,6 +51,7 @@ import { CartItemComponent } from './shopping/cart-item/cart-item.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
